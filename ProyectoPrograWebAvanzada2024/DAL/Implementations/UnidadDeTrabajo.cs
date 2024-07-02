@@ -14,14 +14,19 @@ namespace DAL.Implementations
     {
 
         public ITareaDAL TareaDAL { get; set; }
+        public IClaseDAL ClaseDAL { get; set; }
 
 
         private ColegiodbContext _ColegiodbContext;
 
-        public UnidadDeTrabajo(ColegiodbContext ColegiodbContext, ITareaDAL TareaDAL)
+        public UnidadDeTrabajo(ColegiodbContext ColegiodbContext, 
+                        ITareaDAL TareaDAL,
+                        IClaseDAL claseDAL
+            )
         {
             _ColegiodbContext = ColegiodbContext;
             this.TareaDAL = TareaDAL;
+            ClaseDAL = claseDAL;
         }
 
         public bool Complete()

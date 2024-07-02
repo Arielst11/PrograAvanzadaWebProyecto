@@ -21,6 +21,8 @@ builder.Services.AddDbContext<ColegiodbContext>();
 
 builder.Services.AddScoped<ITareaDAL, TareaDALImpl>();
 builder.Services.AddScoped<ITareaService, TareaService>();
+builder.Services.AddScoped<IClaseDAL, ClaseDALImpl>();
+builder.Services.AddScoped<IClaseService, ClaseService>();
 builder.Services.AddScoped<IUnidadDeTrabajo, UnidadDeTrabajo>();
 
 
