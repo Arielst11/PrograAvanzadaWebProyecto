@@ -10,6 +10,7 @@ namespace DAL.Interfaces
     {
         ITareaDAL TareaDAL { get; }
         IClaseDAL ClaseDAL { get; }
+        IAsistenciasDAL AsistenciasDAL { get; }
 
 
         bool Complete();

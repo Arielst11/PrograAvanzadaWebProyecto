@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Entities.Entities;
 
-public partial class Asistencium
+public partial class Asistencias
 {
     public int ConsecutivoAsistencia { get; set; }
 

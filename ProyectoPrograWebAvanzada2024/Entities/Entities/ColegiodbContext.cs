@@ -15,7 +15,7 @@ public partial class ColegiodbContext : DbContext
     {
     }
 
-    public virtual DbSet<Asistencium> Asistencia { get; set; }
+    public virtual DbSet<Asistencias> Asistencia { get; set; }
 
     public virtual DbSet<Clase> Clases { get; set; }
 
@@ -37,7 +37,7 @@ public partial class ColegiodbContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Asistencium>(entity =>
+        modelBuilder.Entity<Asistencias>(entity =>
         {
             entity.HasKey(e => e.ConsecutivoAsistencia).HasName("PK__ASISTENC__E29A3FCB0AE53876");
 

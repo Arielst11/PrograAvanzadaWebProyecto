@@ -17,7 +17,7 @@ public partial class Usuario
 
     public int? FkConsecutivoClase { get; set; }
 
-    public virtual ICollection<Asistencium> Asistencia { get; set; } = new List<Asistencium>();
+    public virtual ICollection<Asistencias> Asistencia { get; set; } = new List<Asistencias>();
 
     public virtual Clase? FkConsecutivoClaseNavigation { get; set; }
 
