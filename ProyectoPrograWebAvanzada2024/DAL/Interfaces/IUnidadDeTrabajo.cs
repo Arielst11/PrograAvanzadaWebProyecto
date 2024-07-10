@@ -12,6 +12,7 @@ namespace DAL.Interfaces
         IClaseDAL ClaseDAL { get; }
         IAsistenciasDAL AsistenciasDAL { get; }
         INotaDAL NotaDAL { get; }
+        ITipoUsuarioDAL TipoUsuarioDAL { get; }
 
 
         bool Complete();

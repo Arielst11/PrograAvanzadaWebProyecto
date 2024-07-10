@@ -17,6 +17,7 @@ namespace DAL.Implementations
         public IClaseDAL ClaseDAL { get; set; }
         public IAsistenciasDAL AsistenciasDAL { get; set; }
         public INotaDAL NotaDAL { get; set; }
+        public ITipoUsuarioDAL TipoUsuarioDAL { get; set; }
 
 
         private ColegiodbContext _ColegiodbContext;
@@ -25,7 +26,8 @@ namespace DAL.Implementations
                         ITareaDAL TareaDAL,
                         IClaseDAL claseDAL,
                         IAsistenciasDAL asistenciasDAL,
-                        INotaDAL notaDAL
+                        INotaDAL notaDAL,
+                        ITipoUsuarioDAL tipoUsuarioDAL
             )
         {
             _ColegiodbContext = ColegiodbContext;
@@ -33,6 +35,7 @@ namespace DAL.Implementations
             this.ClaseDAL = claseDAL;
             this.AsistenciasDAL = asistenciasDAL;
             this.NotaDAL = notaDAL;
+            this.TipoUsuarioDAL = tipoUsuarioDAL;
         }
 
         public bool Complete()
