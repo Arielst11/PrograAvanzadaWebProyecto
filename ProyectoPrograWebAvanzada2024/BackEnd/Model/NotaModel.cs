@@ -10,6 +10,8 @@ namespace BackEnd.Model
 
         public int? FkConsecutivoTarea { get; set; }
 
+        public string? NotaTarea { get; set; }
+
         public virtual Tarea? FkConsecutivoTareaNavigation { get; set; }
 
         public virtual Usuario? FkConsecutivoUsuarioNavigation { get; set; }

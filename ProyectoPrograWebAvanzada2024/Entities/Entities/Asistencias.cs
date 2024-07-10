@@ -9,7 +9,7 @@ public partial class Asistencias
 
     public DateOnly? Fecha { get; set; }
 
-    public bool? Asistencia { get; set; }
+    public bool? AsistenciaUsuario { get; set; }
 
     public int? PorcentajeAsistencia { get; set; }
 

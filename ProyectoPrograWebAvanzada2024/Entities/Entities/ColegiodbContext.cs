@@ -15,7 +15,7 @@ public partial class ColegiodbContext : DbContext
     {
     }
 
-    public virtual DbSet<Asistencias> Asistencia { get; set; }
+    public virtual DbSet<Asistencias> Asistencias { get; set; }
 
     public virtual DbSet<Clase> Clases { get; set; }
 
@@ -27,13 +27,9 @@ public partial class ColegiodbContext : DbContext
 
     public virtual DbSet<Usuario> Usuarios { get; set; }
 
-    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-       // => optionsBuilder.UseSqlServer("Server=DESKTOP-82180HC\\SQLEXPRESS;Database=COLEGIODB;Integrated Security=True;Trusted_Connection=True; TrustServerCertificate=True;");
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=.;Database=COLEGIODB;Integrated Security=True;Trusted_Connection=True; TrustServerCertificate=True;");
+        => optionsBuilder.UseSqlServer("Server=DESKTOP-82180HC\\SQLEXPRESS;Database=COLEGIODB;Integrated Security=True;Trusted_Connection=True; TrustServerCertificate=True;");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -41,10 +37,10 @@ public partial class ColegiodbContext : DbContext
         {
             entity.HasKey(e => e.ConsecutivoAsistencia).HasName("PK__ASISTENC__E29A3FCB0AE53876");
 
-            entity.ToTable("ASISTENCIA");
+            entity.ToTable("ASISTENCIAS");
 
             entity.Property(e => e.ConsecutivoAsistencia).HasColumnName("CONSECUTIVO_ASISTENCIA");
-            entity.Property(e => e.Asistencia).HasColumnName("ASISTENCIA");
+            entity.Property(e => e.AsistenciaUsuario).HasColumnName("ASISTENCIA_USUARIO");
             entity.Property(e => e.Fecha).HasColumnName("FECHA");
             entity.Property(e => e.FkConsecutivoUsuario).HasColumnName("FK_CONSECUTIVO_USUARIO");
             entity.Property(e => e.PorcentajeAsistencia).HasColumnName("PORCENTAJE_ASISTENCIA");
@@ -80,6 +76,10 @@ public partial class ColegiodbContext : DbContext
             entity.Property(e => e.ConsecutivoNotas).HasColumnName("CONSECUTIVO_NOTAS");
             entity.Property(e => e.FkConsecutivoTarea).HasColumnName("FK_CONSECUTIVO_TAREA");
             entity.Property(e => e.FkConsecutivoUsuario).HasColumnName("FK_CONSECUTIVO_USUARIO");
+            entity.Property(e => e.NotaTarea)
+                .HasMaxLength(20)
+                .IsUnicode(false)
+                .HasColumnName("NOTA_TAREA");
 
             entity.HasOne(d => d.FkConsecutivoTareaNavigation).WithMany(p => p.Nota)
                 .HasForeignKey(d => d.FkConsecutivoTarea)

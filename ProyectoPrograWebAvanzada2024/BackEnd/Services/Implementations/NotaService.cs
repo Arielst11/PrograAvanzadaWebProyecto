@@ -26,9 +26,10 @@ namespace BackEnd.Services.Implementations
             {
                 ConsecutivoNotas = nota.ConsecutivoNotas,
                 FkConsecutivoUsuario = nota.FkConsecutivoUsuario,
-                FkConsecutivoTarea = nota.FkConsecutivoTarea
+                FkConsecutivoTarea = nota.FkConsecutivoTarea,
+                NotaTarea = nota.NotaTarea
 
-    };
+            };
 
             return entity;
         }
@@ -39,7 +40,8 @@ namespace BackEnd.Services.Implementations
             {
                 ConsecutivoNotas = nota.ConsecutivoNotas,
                 FkConsecutivoUsuario = nota.FkConsecutivoUsuario,
-                FkConsecutivoTarea = nota.FkConsecutivoTarea
+                FkConsecutivoTarea = nota.FkConsecutivoTarea,
+                NotaTarea = nota.NotaTarea
             };
 
             return entity;

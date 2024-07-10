@@ -26,7 +26,7 @@ namespace BackEnd.Services.Implementations
             {
                 ConsecutivoAsistencia = asistencias.ConsecutivoAsistencia,
                 Fecha = asistencias.Fecha,
-                Asistencia = asistencias.Asistencia,
+                AsistenciaUsuario = asistencias.Asistencia,
                 PorcentajeAsistencia = asistencias.PorcentajeAsistencia,
                 FkConsecutivoUsuario = asistencias.FkConsecutivoUsuario
 
@@ -41,7 +41,7 @@ namespace BackEnd.Services.Implementations
             {
                 ConsecutivoAsistencia = asistencias.ConsecutivoAsistencia,
                 Fecha = asistencias.Fecha,
-                Asistencia = asistencias.Asistencia,
+                Asistencia = asistencias.AsistenciaUsuario,
                 PorcentajeAsistencia = asistencias.PorcentajeAsistencia,
                 FkConsecutivoUsuario = asistencias.FkConsecutivoUsuario
             };
