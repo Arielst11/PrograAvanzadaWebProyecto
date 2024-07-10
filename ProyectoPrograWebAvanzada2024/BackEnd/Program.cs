@@ -25,6 +25,8 @@ builder.Services.AddScoped<IClaseDAL, ClaseDALImpl>();
 builder.Services.AddScoped<IClaseService, ClaseService>();
 builder.Services.AddScoped<IAsistenciasDAL, AsistenciasDALImpl>();
 builder.Services.AddScoped<IAsistenciasService, AsistenciasService>();
+builder.Services.AddScoped<INotaDAL, NotaDALImpl>();
+builder.Services.AddScoped<INotaService, NotaService>();
 builder.Services.AddScoped<IUnidadDeTrabajo, UnidadDeTrabajo>();
 
 

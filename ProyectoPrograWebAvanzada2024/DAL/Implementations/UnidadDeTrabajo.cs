@@ -16,6 +16,7 @@ namespace DAL.Implementations
         public ITareaDAL TareaDAL { get; set; }
         public IClaseDAL ClaseDAL { get; set; }
         public IAsistenciasDAL AsistenciasDAL { get; set; }
+        public INotaDAL NotaDAL { get; set; }
 
 
         private ColegiodbContext _ColegiodbContext;
@@ -23,13 +24,15 @@ namespace DAL.Implementations
         public UnidadDeTrabajo(ColegiodbContext ColegiodbContext, 
                         ITareaDAL TareaDAL,
                         IClaseDAL claseDAL,
-                        IAsistenciasDAL asistenciasDAL
+                        IAsistenciasDAL asistenciasDAL,
+                        INotaDAL notaDAL
             )
         {
             _ColegiodbContext = ColegiodbContext;
             this.TareaDAL = TareaDAL;
             this.ClaseDAL = claseDAL;
             this.AsistenciasDAL = asistenciasDAL;
+            this.NotaDAL = notaDAL;
         }
 
         public bool Complete()
