@@ -14,6 +14,8 @@ namespace DAL.Interfaces
         INotaDAL NotaDAL { get; }
         ITipoUsuarioDAL TipoUsuarioDAL { get; }
 
+        IUsuarioDAL UsuarioDAL { get; }
+
 
         bool Complete();
     }

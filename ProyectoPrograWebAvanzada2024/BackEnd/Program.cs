@@ -30,7 +30,8 @@ builder.Services.AddScoped<INotaService, NotaService>();
 builder.Services.AddScoped<ITipoUsuarioDAL, TipoUsuarioDALImpl>();
 builder.Services.AddScoped<ITipoUsuarioService, TipoUsuarioService>();
 builder.Services.AddScoped<IUnidadDeTrabajo, UnidadDeTrabajo>();
-
+builder.Services.AddScoped<IUsuarioDAL, UsuarioDALImpl>();
+builder.Services.AddScoped<IUsuarioService, UsuarioService>();
 
 #endregion
 
