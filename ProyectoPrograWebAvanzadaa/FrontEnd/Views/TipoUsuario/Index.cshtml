@@ -1,0 +1,43 @@
+﻿@model IEnumerable<FrontEnd.Models.TipoUsuarioViewModel>
+
+@{
+    ViewData["Title"] = "Tipo de Usuario - ";
+    Layout = "~/Views/Shared/_Layout_System.cshtml";
+
+}
+
+<h1>Tipos de Usuario</h1>
+
+<p>
+    <a asp-action="Create">Agregar nuevo tipo de usuario</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTipoUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.TipoUsuario1)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTipoUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.TipoUsuario1)
+            </td>
+            <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdTipoUsuario }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.IdTipoUsuario }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdTipoUsuario })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

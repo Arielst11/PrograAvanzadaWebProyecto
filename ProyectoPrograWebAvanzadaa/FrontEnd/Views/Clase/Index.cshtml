@@ -1,0 +1,49 @@
+﻿@model IEnumerable<FrontEnd.Models.ClaseViewModel>
+
+@{
+    ViewData["Title"] = "Clase - ";
+    Layout = "~/Views/Shared/_Layout_System.cshtml";
+
+}
+
+<h1>Lista de Clases</h1>
+
+<p>
+    <a asp-action="Create">Crear nueva clase</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdClase)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Grado)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Seccion)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdClase)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grado)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Seccion)
+            </td>
+            <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdClase }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.IdClase }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdClase })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

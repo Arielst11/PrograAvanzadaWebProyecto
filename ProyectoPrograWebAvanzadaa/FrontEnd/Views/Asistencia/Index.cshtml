@@ -1,0 +1,54 @@
+﻿@model IEnumerable<FrontEnd.Models.AsistenciaViewModel>
+
+@{
+    ViewData["Title"] = "Asistencia - "; 
+    Layout = "~/Views/Shared/_Layout_System.cshtml";
+}
+
+<h1>Lista de Asistencia</h1>
+
+<p>
+    <a asp-action="Create">Registrar Asistencia</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdAsistencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AsistenciaUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PorcentajeAsistencia)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdUsuario)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdAsistencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AsistenciaUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PorcentajeAsistencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUsuario)
+            </td>
+            <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdAsistencia }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.IdAsistencia }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdAsistencia  })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
