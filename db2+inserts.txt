@@ -1,0 +1,223 @@
+CREATE DATABASE COLEGIODB2
+
+------------------------------------------------------------------------------------------
+USE COLEGIODB2
+
+CREATE TABLE [dbo].[ASISTENCIA](
+    IdAsistencia int IDENTITY(1,1) NOT NULL,
+    Fecha date NULL,
+    AsistenciaUsuario bit NULL,
+    PorcentajeAsistencia int NULL,
+    IdUsuario int NULL,
+PRIMARY KEY CLUSTERED 
+(
+    IdAsistencia ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+------------------------------------------------------------------------------------------
+
+CREATE TABLE [dbo].[CLASE](
+    IdClase int IDENTITY(1,1) NOT NULL,
+    Grado varchar(1) NULL,
+    Seccion varchar(2) NULL,
+PRIMARY KEY CLUSTERED 
+(
+    IdClase ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+------------------------------------------------------------------------------------------
+
+
+CREATE TABLE [dbo].[NOTA](
+    IdNota int IDENTITY(1,1) NOT NULL,
+    IdUsuario int NULL,
+    IdTarea int NULL,
+    NotaTarea varchar(20) NULL,
+PRIMARY KEY CLUSTERED 
+(
+    IdNota ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+------------------------------------------------------------------------------------------
+
+CREATE TABLE [dbo].[TAREA](
+    IdTarea int IDENTITY(1,1) NOT NULL,
+    NombreTarea varchar(100) NULL,
+    DescripcionTarea varchar(500) NULL,
+    ValorPorcentual int NULL,
+PRIMARY KEY CLUSTERED 
+(
+    IdTarea ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+------------------------------------------------------------------------------------------
+
+
+CREATE TABLE [dbo].[TIPO_USUARIO](
+    IdTipoUsuario int IDENTITY(1,1) NOT NULL,
+    TipoUsuario varchar(20) NULL,
+PRIMARY KEY CLUSTERED 
+(
+    IdTipoUsuario ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+------------------------------------------------------------------------------------------
+
+
+CREATE TABLE [dbo].[USUARIO](
+    IdUsuario int IDENTITY(1,1) NOT NULL,
+    Nombre varchar(50) NULL,
+    PrimerApellido varchar(50) NULL,
+    SegundoApellido varchar(50) NULL,
+    IdTipoUsuario int NULL,
+    IdClase int NULL,
+PRIMARY KEY CLUSTERED 
+(
+    IdUsuario ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON, OPTIMIZE_FOR_SEQUENTIAL_KEY = OFF) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+------------------------------------------------------------------------------------------
+
+ALTER TABLE [dbo].[ASISTENCIA]  WITH CHECK ADD FOREIGN KEY(IdUsuario)
+REFERENCES [dbo].[USUARIO] (IdUsuario)
+GO
+
+ALTER TABLE [dbo].[NOTA]  WITH CHECK ADD FOREIGN KEY(IdUsuario)
+REFERENCES [dbo].[USUARIO] (IdUsuario)
+GO
+
+ALTER TABLE [dbo].[NOTA]  WITH CHECK ADD FOREIGN KEY(IdTarea)
+REFERENCES [dbo].[TAREA] (IdTarea)
+GO
+
+ALTER TABLE [dbo].[USUARIO]  WITH CHECK ADD FOREIGN KEY(IdTipoUsuario)
+REFERENCES [dbo].[TIPO_USUARIO] (IdTipoUsuario)
+GO
+
+ALTER TABLE [dbo].[USUARIO]  WITH CHECK ADD FOREIGN KEY(IdClase)
+REFERENCES [dbo].[CLASE] (IdClase)
+GO
+
+
+
+
+
+------------------------------------------------------------------------------------------
+-- INSERTS
+------------------------------------------------------------------------------------------
+
+-- Eliminar registros
+DELETE FROM TIPO_USUARIO;
+
+-- Restablecer el valor del IDENTITY a 1
+DBCC CHECKIDENT ('TIPO_USUARIO', RESEED, 0);
+
+-- Insertar nuevos registros
+INSERT INTO TIPO_USUARIO (TipoUsuario) VALUES ('Estudiante');
+INSERT INTO TIPO_USUARIO (TipoUsuario) VALUES ('Profesor');
+
+-- Eliminar registros
+DELETE FROM CLASE;
+
+-- Restablecer el valor del IDENTITY a 1
+DBCC CHECKIDENT ('CLASE', RESEED, 0);
+
+-- Insertar nuevos registros
+INSERT INTO CLASE (Grado, Seccion) VALUES ('1', 'A');
+INSERT INTO CLASE (Grado, Seccion) VALUES ('1', 'B');
+INSERT INTO CLASE (Grado, Seccion) VALUES ('2', 'A');
+INSERT INTO CLASE (Grado, Seccion) VALUES ('2', 'B');
+INSERT INTO CLASE (Grado, Seccion) VALUES ('3', 'A');
+INSERT INTO CLASE (Grado, Seccion) VALUES ('3', 'B');
+INSERT INTO CLASE (Grado, Seccion) VALUES ('4', 'A');
+INSERT INTO CLASE (Grado, Seccion) VALUES ('4', 'B');
+INSERT INTO CLASE (Grado, Seccion) VALUES ('5', 'A');
+INSERT INTO CLASE (Grado, Seccion) VALUES ('5', 'B');
+
+
+-- Eliminar registros
+DELETE FROM USUARIO;
+
+-- Restablecer el valor del IDENTITY a 1
+DBCC CHECKIDENT ('USUARIO', RESEED, 0);
+
+-- Insertar nuevos registros
+INSERT INTO USUARIO (Nombre, PrimerApellido, SegundoApellido, IdTipoUsuario, IdClase) VALUES ('Juan', 'Perez', 'Gomez', 1, 1);
+INSERT INTO USUARIO (Nombre, PrimerApellido, SegundoApellido, IdTipoUsuario, IdClase) VALUES ('Maria', 'Rodriguez', 'Lopez', 1, 2);
+INSERT INTO USUARIO (Nombre, PrimerApellido, SegundoApellido, IdTipoUsuario, IdClase) VALUES ('Carlos', 'Fernandez', 'Garcia', 1, 3);
+INSERT INTO USUARIO (Nombre, PrimerApellido, SegundoApellido, IdTipoUsuario, IdClase) VALUES ('Ana', 'Martinez', 'Sanchez', 1, 4);
+INSERT INTO USUARIO (Nombre, PrimerApellido, SegundoApellido, IdTipoUsuario, IdClase) VALUES ('Luis', 'Gonzalez', 'Ramirez', 1, 5);
+INSERT INTO USUARIO (Nombre, PrimerApellido, SegundoApellido, IdTipoUsuario, IdClase) VALUES ('Laura', 'Diaz', 'Torres', 1, 6);
+INSERT INTO USUARIO (Nombre, PrimerApellido, SegundoApellido, IdTipoUsuario, IdClase) VALUES ('Jorge', 'Ruiz', 'Vargas', 1, 7);
+INSERT INTO USUARIO (Nombre, PrimerApellido, SegundoApellido, IdTipoUsuario, IdClase) VALUES ('Elena', 'Morales', 'Castillo', 1, 8);
+INSERT INTO USUARIO (Nombre, PrimerApellido, SegundoApellido, IdTipoUsuario, IdClase) VALUES ('Roberto', 'Ortiz', 'Silva', 2, 9);
+INSERT INTO USUARIO (Nombre, PrimerApellido, SegundoApellido, IdTipoUsuario, IdClase) VALUES ('Isabel', 'Ramos', 'Reyes', 2, 10);
+
+
+
+-- Eliminar registros
+DELETE FROM TAREA;
+
+-- Restablecer el valor del IDENTITY a 1
+DBCC CHECKIDENT ('TAREA', RESEED, 0);
+
+-- Insertar nuevos registros
+INSERT INTO TAREA (NombreTarea, DescripcionTarea, ValorPorcentual) VALUES ('Tarea 1', 'Descripción de la tarea 1', 10);
+INSERT INTO TAREA (NombreTarea, DescripcionTarea, ValorPorcentual) VALUES ('Tarea 2', 'Descripción de la tarea 2', 15);
+INSERT INTO TAREA (NombreTarea, DescripcionTarea, ValorPorcentual) VALUES ('Tarea 3', 'Descripción de la tarea 3', 20);
+INSERT INTO TAREA (NombreTarea, DescripcionTarea, ValorPorcentual) VALUES ('Tarea 4', 'Descripción de la tarea 4', 25);
+INSERT INTO TAREA (NombreTarea, DescripcionTarea, ValorPorcentual) VALUES ('Tarea 5', 'Descripción de la tarea 5', 30);
+INSERT INTO TAREA (NombreTarea, DescripcionTarea, ValorPorcentual) VALUES ('Tarea 6', 'Descripción de la tarea 6', 35);
+INSERT INTO TAREA (NombreTarea, DescripcionTarea, ValorPorcentual) VALUES ('Tarea 7', 'Descripción de la tarea 7', 40);
+INSERT INTO TAREA (NombreTarea, DescripcionTarea, ValorPorcentual) VALUES ('Tarea 8', 'Descripción de la tarea 8', 45);
+INSERT INTO TAREA (NombreTarea, DescripcionTarea, ValorPorcentual) VALUES ('Tarea 9', 'Descripción de la tarea 9', 50);
+INSERT INTO TAREA (NombreTarea, DescripcionTarea, ValorPorcentual) VALUES ('Tarea 10', 'Descripción de la tarea 10', 55);
+
+-- Eliminar registros
+DELETE FROM NOTA;
+
+-- Restablecer el valor del IDENTITY a 1
+DBCC CHECKIDENT ('NOTA', RESEED, 0);
+
+-- Insertar nuevos registros
+INSERT INTO NOTA (IdUsuario, IdTarea, NotaTarea) VALUES (1, 1, 'A');
+INSERT INTO NOTA (IdUsuario, IdTarea, NotaTarea) VALUES (2, 2, 'B');
+INSERT INTO NOTA (IdUsuario, IdTarea, NotaTarea) VALUES (3, 3, 'C');
+INSERT INTO NOTA (IdUsuario, IdTarea, NotaTarea) VALUES (4, 4, 'D');
+INSERT INTO NOTA (IdUsuario, IdTarea, NotaTarea) VALUES (5, 5, 'E');
+INSERT INTO NOTA (IdUsuario, IdTarea, NotaTarea) VALUES (6, 6, 'F');
+INSERT INTO NOTA (IdUsuario, IdTarea, NotaTarea) VALUES (7, 7, 'G');
+INSERT INTO NOTA (IdUsuario, IdTarea, NotaTarea) VALUES (8, 8, 'H');
+INSERT INTO NOTA (IdUsuario, IdTarea, NotaTarea) VALUES (9, 9, 'I');
+INSERT INTO NOTA (IdUsuario, IdTarea, NotaTarea) VALUES (10, 10, 'J');
+
+
+-- Eliminar registros
+DELETE FROM ASISTENCIA;
+
+-- Restablecer el valor del IDENTITY a 1
+DBCC CHECKIDENT ('ASISTENCIA', RESEED, 0);
+
+-- Insertar nuevos registros
+INSERT INTO ASISTENCIA (Fecha, AsistenciaUsuario, PorcentajeAsistencia, IdUsuario) VALUES ('2024-01-01', 1, 100, 1);
+INSERT INTO ASISTENCIA (Fecha, AsistenciaUsuario, PorcentajeAsistencia, IdUsuario) VALUES ('2024-01-02', 1, 95, 2);
+INSERT INTO ASISTENCIA (Fecha, AsistenciaUsuario, PorcentajeAsistencia, IdUsuario) VALUES ('2024-01-03', 1, 90, 3);
+INSERT INTO ASISTENCIA (Fecha, AsistenciaUsuario, PorcentajeAsistencia, IdUsuario) VALUES ('2024-01-04', 1, 85, 4);
+INSERT INTO ASISTENCIA (Fecha, AsistenciaUsuario, PorcentajeAsistencia, IdUsuario) VALUES ('2024-01-05', 1, 80, 5);
+INSERT INTO ASISTENCIA (Fecha, AsistenciaUsuario, PorcentajeAsistencia, IdUsuario) VALUES ('2024-01-06', 1, 75, 6);
+INSERT INTO ASISTENCIA (Fecha, AsistenciaUsuario, PorcentajeAsistencia, IdUsuario) VALUES ('2024-01-07', 1, 70, 7);
+INSERT INTO ASISTENCIA (Fecha, AsistenciaUsuario, PorcentajeAsistencia, IdUsuario) VALUES ('2024-01-08', 1, 65, 8);
+INSERT INTO ASISTENCIA (Fecha, AsistenciaUsuario, PorcentajeAsistencia, IdUsuario) VALUES ('2024-01-09', 1, 60, 9);
+INSERT INTO ASISTENCIA (Fecha, AsistenciaUsuario, PorcentajeAsistencia, IdUsuario) VALUES ('2024-01-10', 1, 55, 10);
