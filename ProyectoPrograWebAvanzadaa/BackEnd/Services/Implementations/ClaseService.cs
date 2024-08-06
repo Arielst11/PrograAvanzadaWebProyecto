@@ -26,8 +26,8 @@ namespace BackEnd.Services.Implementations
             {
                 IdClase = clase.IdClase,
                 Grado = clase.Grado,
-                Seccion = clase.Seccion
-
+                Seccion = clase.Seccion,
+                Usuarios = clase.Usuarios.ToList()
             };
 
             return entity;
@@ -39,7 +39,8 @@ namespace BackEnd.Services.Implementations
             {
                 IdClase = clase.IdClase,
                 Grado = clase.Grado,
-                Seccion = clase.Seccion
+                Seccion = clase.Seccion,
+                Usuarios = clase.Usuarios.ToList()
             };
 
             return entity;

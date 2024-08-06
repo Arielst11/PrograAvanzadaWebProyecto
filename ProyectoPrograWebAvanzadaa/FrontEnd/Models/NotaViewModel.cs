@@ -1,4 +1,6 @@
-﻿namespace FrontEnd.Models
+﻿using FrontEnd.ApiModels;
+
+namespace FrontEnd.Models
 {
     public class NotaViewModel
     {
@@ -10,8 +12,8 @@
 
         public string? NotaTarea { get; set; }
 
-        //public virtual Tarea? IdTareaNavigation { get; set; }
+        public virtual Tarea? IdTareaNavigation { get; set; }
 
-       //public virtual Usuario? IdUsuarioNavigation { get; set; }
+       public virtual Usuario? IdUsuarioNavigation { get; set; }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace FrontEnd.Models
+﻿using FrontEnd.ApiModels;
+
+namespace FrontEnd.Models
 {
     public class UsuarioViewModel
     {
@@ -14,12 +16,12 @@
 
         public int? IdClase { get; set; }
 
-        //public virtual ICollection<Asistencia> Asistencia { get; set; } = new List<Asistencia>();
+        public virtual ICollection<Asistencia> Asistencia { get; set; } = new List<Asistencia>();
 
-        //public virtual Clase? IdClaseNavigation { get; set; }
+        public virtual Clase? IdClaseNavigation { get; set; }
 
-        //public virtual TipoUsuario? IdTipoUsuarioNavigation { get; set; }
+        public virtual TipoUsuario? IdTipoUsuarioNavigation { get; set; }
 
-        //public virtual ICollection<Nota> Nota { get; set; } = new List<Nota>();
+        public virtual ICollection<Nota> Nota { get; set; } = new List<Nota>();
     }
 }

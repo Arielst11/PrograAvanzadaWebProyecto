@@ -243,7 +243,7 @@
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-book"></i><span>Clase</span> </a>
                     <ul class="ml-menu">
-                        <li class="@* @(Context.Session.GetString(" ConRol") !=null && Context.Session.GetString("ConRol")= ="1" ? "" : "hidden" ) *@"><a href="@Url.Action("InsertarProducto","Inventario")">Ingresar Clase</a></li>
+                        <li class="@* @(Context.Session.GetString(" ConRol") !=null && Context.Session.GetString("ConRol")= ="1" ? "" : "hidden" ) *@"><a href="@Url.Action("Create", "Clase")">Ingresar Clase</a></li>
                         <li><a href="@Url.Action("Index","Clase")">Ver Clases</a></li>
                     </ul>
                 </li>
@@ -252,7 +252,7 @@
                 <li class="@* @(Context.Session.GetString("ConRol") != null && Context.Session.GetString("ConRol") == "1" ? "" : "hidden *@")">
                     <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-trending-up"></i><span>Nota</span> </a>
                     <ul class="ml-menu">
-                        <li><a href="@Url.Action("InsertarVentaLocal","VentasLocales")">Ingresar Nota</a></li>
+                        <li><a href="@Url.Action("Create","Nota")">Ingresar Nota</a></li>
                         <li><a href="@Url.Action("Index","Nota")">Ver Notas</a></li>
                     </ul>
                 </li>
@@ -261,7 +261,7 @@
                 <li class="@* @(Context.Session.GetString("ConRol") != null && Context.Session.GetString("ConRol") != "2" ? "" : "hidden") *@">
                     <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-assignment"></i><span>Tarea</span> </a>
                     <ul class="ml-menu">
-                        <li><a href="@Url.Action("InsertarPedido","Pedido")">Ingresar Tarea</a></li>
+                        <li><a href="@Url.Action("Create","Tarea")">Ingresar Tarea</a></li>
                         <li><a href="@Url.Action("Index","Tarea")">Ver Tareas</a></li>
                     </ul>
                 </li>
@@ -271,7 +271,7 @@
                 <li>
                     <a href="javascript:void(0);" class="menu-toggle"><i class="zmdi zmdi-accounts"></i><span>Tipo de Usuario (?)</span> </a>
                     <ul class="ml-menu">
-                        <li><a href="@Url.Action("RegistrarConsulta","Consulta")">Ingresar Tipo de Usuario</a></li>
+                        <li><a href="@Url.Action("Create","TipoUsuario")">Ingresar Tipo de Usuario</a></li>
                         <li>
                             <a href="@Url.Action("Index","TipoUsuario")">Ver Tipos de Usuario</a>
                         </li>

@@ -9,7 +9,7 @@
 <h1>Tipos de Usuario</h1>
 
 <p>
-    <a asp-action="Create">Agregar nuevo tipo de usuario</a>
+    @Html.ActionLink("Registrar nuevo Tipo de Usuario ", "Create", "TipoUsuario", null, new { @class = "link-class" })
 </p>
 <table class="table">
     <thead>

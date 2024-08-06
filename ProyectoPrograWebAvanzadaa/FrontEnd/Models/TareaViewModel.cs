@@ -1,4 +1,6 @@
-﻿namespace FrontEnd.Models
+﻿using FrontEnd.ApiModels;
+
+namespace FrontEnd.Models
 {
     public class TareaViewModel
     {
@@ -10,6 +12,6 @@
 
         public int? ValorPorcentual { get; set; }
 
-        //public virtual ICollection<Nota> Nota { get; set; } = new List<Nota>();
+        public virtual ICollection<Nota> Nota { get; set; } = new List<Nota>();
     }
 }

@@ -25,7 +25,8 @@ namespace FrontEnd.Controllers
         // GET: AsistenciaController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            AsistenciaViewModel asistencia = AsistenciaHelper.GetAsistencia(id);
+            return View(asistencia);
         }
 
         // GET: AsistenciaController/Create
@@ -76,16 +77,18 @@ namespace FrontEnd.Controllers
         // GET: AsistenciaController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            AsistenciaViewModel asistencia = AsistenciaHelper.GetAsistencia(id);
+            return View(asistencia);
         }
 
         // POST: AsistenciaController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(AsistenciaViewModel asistencia)
         {
             try
             {
+                _ = AsistenciaHelper.Remove(asistencia.IdAsistencia);
                 return RedirectToAction(nameof(Index));
             }
             catch

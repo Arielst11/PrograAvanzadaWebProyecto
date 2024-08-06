@@ -9,7 +9,7 @@
 <h1>Lista de Clases</h1>
 
 <p>
-    <a asp-action="Create">Crear nueva clase</a>
+    @Html.ActionLink("Registrar nueva clase ", "Create", "Clase", null, new { @class = "link-class" })
 </p>
 <table class="table">
     <thead>

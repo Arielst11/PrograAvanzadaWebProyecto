@@ -1,4 +1,7 @@
-﻿namespace FrontEnd.Models
+﻿
+using FrontEnd.ApiModels;
+
+namespace FrontEnd.Models
 {
     public class TipoUsuarioViewModel
     {
@@ -6,6 +9,6 @@
 
         public string? TipoUsuario1 { get; set; }
 
-       //public virtual ICollection<Usuario> Usuarios { get; set; } = new List<Usuario>();
+       public virtual ICollection<Usuario> Usuarios { get; set; } = new List<Usuario>();
     }
 }

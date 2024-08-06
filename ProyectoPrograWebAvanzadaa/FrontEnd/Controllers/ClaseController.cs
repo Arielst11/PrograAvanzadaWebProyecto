@@ -1,4 +1,5 @@
-﻿using FrontEnd.Helpers.Implementations;
+﻿using FrontEnd.ApiModels;
+using FrontEnd.Helpers.Implementations;
 using FrontEnd.Helpers.Interfaces;
 using FrontEnd.Models;
 using Microsoft.AspNetCore.Http;
@@ -24,7 +25,8 @@ namespace FrontEnd.Controllers
         // GET: ClaseController/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            ClaseViewModel clase = ClaseHelper.GetClase(id);
+            return View(clase);
         }
 
         // GET: ClaseController/Create
@@ -40,6 +42,7 @@ namespace FrontEnd.Controllers
         {
             try
             {
+                _ = ClaseHelper.Add(clase);
                 return RedirectToAction(nameof(Index));
             }
             catch
@@ -74,16 +77,18 @@ namespace FrontEnd.Controllers
         // GET: ClaseController/Delete/5
         public ActionResult Delete(int id)
         {
-            return View();
+            ClaseViewModel clase = ClaseHelper.GetClase(id);
+            return View(clase);
         }
 
         // POST: ClaseController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Delete(int id, IFormCollection collection)
+        public ActionResult Delete(ClaseViewModel clase)
         {
             try
             {
+                _ = ClaseHelper.Remove(clase.IdClase);
                 return RedirectToAction(nameof(Index));
             }
             catch

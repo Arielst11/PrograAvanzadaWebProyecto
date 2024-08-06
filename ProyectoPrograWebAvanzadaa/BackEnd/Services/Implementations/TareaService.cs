@@ -27,8 +27,8 @@ namespace BackEnd.Services.Implementations
                 IdTarea = tarea.IdTarea,
                 NombreTarea = tarea.NombreTarea,
                 DescripcionTarea = tarea.DescripcionTarea,
-                ValorPorcentual = tarea.ValorPorcentual
-
+                ValorPorcentual = tarea.ValorPorcentual,
+                Nota = tarea.Nota.ToList()
             };
 
             return entity;
@@ -41,7 +41,9 @@ namespace BackEnd.Services.Implementations
                 IdTarea = tarea.IdTarea,
                 NombreTarea = tarea.NombreTarea,
                 DescripcionTarea = tarea.DescripcionTarea,
-                ValorPorcentual = tarea.ValorPorcentual
+                ValorPorcentual = tarea.ValorPorcentual,
+                Nota = tarea.Nota.ToList()
+
             };
 
             return entity;

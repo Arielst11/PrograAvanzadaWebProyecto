@@ -25,19 +25,30 @@ namespace BackEnd.Services.Implementations
             TipoUsuario entity = new TipoUsuario
             {
                 IdTipoUsuario = tipoUsuario.IdTipoUsuario,
-                TipoUsuario1 = tipoUsuario.TipoUsuario1
-
-    };
+                TipoUsuario1 = tipoUsuario.TipoUsuario1,
+                Usuarios = tipoUsuario.Usuarios.ToList()
+            };
 
             return entity;
         }
 
         private TipoUsuarioModel Convertir(TipoUsuario tipoUsuario)
+        
         {
+
+            //if (tipoUsuario == null)
+            //{
+            //    // Manejo de la situación donde tarea es null
+            //    // Puedes lanzar una excepción, devolver null, etc.
+            //    throw new ArgumentNullException(nameof(tipoUsuario), "El TipoUsuario no puede ser null");
+            //}
+
             TipoUsuarioModel entity = new TipoUsuarioModel
             {
                 IdTipoUsuario = tipoUsuario.IdTipoUsuario,
-                TipoUsuario1 = tipoUsuario.TipoUsuario1
+                TipoUsuario1 = tipoUsuario.TipoUsuario1,
+                Usuarios = tipoUsuario.Usuarios.ToList()
+
             };
 
             return entity;

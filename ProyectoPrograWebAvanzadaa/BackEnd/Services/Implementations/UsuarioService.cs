@@ -30,7 +30,10 @@ namespace BackEnd.Services.Implementations
                 PrimerApellido = usuario.PrimerApellido,
                 SegundoApellido = usuario.SegundoApellido,
                 IdTipoUsuario = usuario.IdTipoUsuario,
-                IdClase = usuario.IdClase
+                IdClase = usuario.IdClase,
+                Nota = usuario.Nota.ToList(),
+                Asistencia= usuario.Asistencia.ToList()
+
             };
 
             return entity;
@@ -45,7 +48,9 @@ namespace BackEnd.Services.Implementations
                 PrimerApellido = usuario.PrimerApellido,
                 SegundoApellido = usuario.SegundoApellido,
                 IdTipoUsuario = usuario.IdTipoUsuario,
-                IdClase = usuario.IdClase
+                IdClase = usuario.IdClase,
+                Nota = usuario.Nota.ToList(),
+                Asistencia = usuario.Asistencia.ToList()
             };
 
             return entity;

@@ -1,4 +1,6 @@
-﻿namespace FrontEnd.Models
+﻿using FrontEnd.ApiModels;
+
+namespace FrontEnd.Models
 {
     public class ClaseViewModel
     {
@@ -8,7 +10,7 @@
 
         public string? Seccion { get; set; }
 
-        //public virtual ICollection<Usuario> Usuarios { get; set; } = new List<Usuario>();
+        public virtual ICollection<Usuario> Usuarios { get; set; } = new List<Usuario>();
 
     }
 }

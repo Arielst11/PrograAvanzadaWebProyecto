@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using FrontEnd.ApiModels;
+using System.ComponentModel;
 
 namespace FrontEnd.Models
 {
@@ -19,7 +20,7 @@ namespace FrontEnd.Models
         [DisplayName("Id Usuario")]
         public int? IdUsuario { get; set; }
 
-        //public virtual Usuario? IdUsuarioNavigation { get; set; }
+        public virtual Usuario? IdUsuarioNavigation { get; set; }
         
     }
 }

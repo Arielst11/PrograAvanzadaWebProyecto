@@ -9,7 +9,7 @@
 <h1>Lista de Tareas</h1>
 
 <p>
-    <a asp-action="Create">Crear nueva tarea</a>
+    @Html.ActionLink("Registrar nueva tarea ", "Create", "Tarea", null, new { @class = "link-class" })
 </p>
 <table class="table">
     <thead>
