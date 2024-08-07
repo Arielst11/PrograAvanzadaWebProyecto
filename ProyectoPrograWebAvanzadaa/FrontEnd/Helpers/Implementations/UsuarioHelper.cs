@@ -7,11 +7,11 @@ namespace FrontEnd.Helpers.Implementations
 {
     public class UsuarioHelper : IUsuarioHelper
     {
-        private readonly IServiceRepository _serviceRepository;
+         IServiceRepository _serviceRepository;
 
         public UsuarioHelper(IServiceRepository serviceRepository)
         {
-            _serviceRepository = serviceRepository;
+           this._serviceRepository = serviceRepository;
         }
 
         public UsuarioViewModel Add(UsuarioViewModel usuario)
@@ -103,6 +103,7 @@ namespace FrontEnd.Helpers.Implementations
             if (responseMessage != null)
             {
                 var content = responseMessage.Content.ReadAsStringAsync().Result;
+
             }
             return usuario;
         }

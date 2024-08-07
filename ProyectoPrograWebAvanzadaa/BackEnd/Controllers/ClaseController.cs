@@ -49,7 +49,7 @@ namespace BackEnd.Controllers
         }
 
         // PUT api/<ClaseController>/5
-        [HttpPut("{id}")]
+        [HttpPut]
         public ClaseModel Put(int id, [FromBody] ClaseModel clase)
         {
             _claseService.Update(clase);

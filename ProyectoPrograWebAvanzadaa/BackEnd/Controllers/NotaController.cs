@@ -50,8 +50,8 @@ namespace BackEnd.Controllers
         }
 
         // PUT api/<NotaController>/5
-        [HttpPut("{id}")]
-        public NotaModel Put(int id, [FromBody] NotaModel nota)
+        [HttpPut]
+        public NotaModel Put([FromBody] NotaModel nota)
         {
             _notaService.Update(nota);
             return nota;

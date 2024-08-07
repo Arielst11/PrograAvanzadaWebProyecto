@@ -49,8 +49,8 @@ namespace BackEnd.Controllers
         }
 
         // PUT api/<TareaController>/5
-        [HttpPut("{id}")]
-        public TareaModel Put(int id, [FromBody] TareaModel tarea)
+        [HttpPut]
+        public TareaModel Put([FromBody] TareaModel tarea)
         {
             _tareaService.Update(tarea);
             return tarea;

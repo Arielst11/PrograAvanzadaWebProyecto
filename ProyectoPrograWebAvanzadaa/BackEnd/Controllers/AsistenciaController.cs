@@ -42,8 +42,8 @@ namespace BackEnd.Controllers
         }
 
         // PUT api/<AsistenciaController>/5
-        [HttpPut("{id}")]
-        public AsistenciaModel Put(int id, [FromBody] AsistenciaModel asistencia)
+        [HttpPut]
+        public AsistenciaModel Put([FromBody] AsistenciaModel asistencia)
         {
             _asistenciaService.Update(asistencia);
             return asistencia;

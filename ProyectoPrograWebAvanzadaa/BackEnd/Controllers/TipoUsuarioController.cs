@@ -49,8 +49,8 @@ namespace BackEnd.Controllers
         }
 
         // PUT api/<TipoUsuarioController>/5
-        [HttpPut("{id}")]
-        public TipoUsuarioModel Put(int id, [FromBody] TipoUsuarioModel tipoUsuario)
+        [HttpPut]
+        public TipoUsuarioModel Put([FromBody] TipoUsuarioModel tipoUsuario)
         {
             _tipoUsuarioService.Update(tipoUsuario);
             return tipoUsuario;
