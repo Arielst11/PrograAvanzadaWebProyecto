@@ -15,10 +15,13 @@ namespace FrontEnd.Helpers.Implementations
 
         public ServiceRepository(HttpClient _client, IConfiguration configuration)
         {
-            Client = _client;
-            string baseUrl = "http://localhost:5113";
-            Client.BaseAddress = new Uri(baseUrl);
 
+            Client = _client;
+            string baseUrl = configuration.GetValue<string>("BackEnd:Url");
+            string ApiKey = configuration.GetValue<string>("BackEnd:ApiKey");
+
+            Client.DefaultRequestHeaders.Add("ApiKey", ApiKey);
+            Client.BaseAddress = new Uri(baseUrl);
         }
         public HttpResponseMessage GetResponse(string url)
         {

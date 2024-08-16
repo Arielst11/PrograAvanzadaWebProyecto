@@ -2,6 +2,7 @@
 using BackEnd.Model;
 using BackEnd.Services.Interfaces;
 using BackEnd.Services.Implementations;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -22,6 +23,7 @@ namespace BackEnd.Controllers
 
 
         // GET: api/<UsuarioController>
+        [Authorize]
         [HttpGet]
         public IEnumerable<UsuarioModel> Get()
         {
