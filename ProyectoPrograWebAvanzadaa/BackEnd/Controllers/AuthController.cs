@@ -71,16 +71,26 @@ namespace BackEnd.Controllers
 
             };
 
-           // Task resultRole;
-           // resultRole = userManager.AddToRoleAsync(user, "Estudiante");
+         //  Task resultRole;
+          // resultRole = userManager.AddToRoleAsync(user, "Estudiante"); //role asignation.
 
 
 
-          var result=  await userManager.CreateAsync(user,model.Password);
+            var result=  await userManager.CreateAsync(user,model.Password);
             if (!result.Succeeded) {
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "INternal server Error" });
 
             }
+
+
+            var roleAssign = await userManager.AddToRoleAsync(user, "Estudiante");
+            if (!roleAssign.Succeeded)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Role could not be assigned" });
+
+            }
+
+
 
             return Ok(new Response {Status= "Success", Message = "Usuario Creado" });
 
