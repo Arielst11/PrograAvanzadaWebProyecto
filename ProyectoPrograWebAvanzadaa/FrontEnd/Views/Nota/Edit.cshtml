@@ -1,12 +1,11 @@
 ﻿@model FrontEnd.Models.NotaViewModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Editar";
+    Layout = "~/Views/Shared/_Layout_System.cshtml";
 }
 
-<h1>Edit</h1>
-
-<h4>NotaViewModel</h4>
+<h1>Editar el registro de nota seleccionado:</h1>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -31,14 +30,14 @@
                 <span asp-validation-for="NotaTarea" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Guardar" class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a asp-action="Index">Regresar a la lista</a>
 </div>
 
 

@@ -1,15 +1,13 @@
 ﻿@model FrontEnd.Models.NotaViewModel
 
 @{
-    ViewData["Title"] = "Delete";
+    ViewData["Title"] = "Eliminar";
     Layout = "~/Views/Shared/_Layout_System.cshtml";
 }
 
-<h1>Delete</h1>
-
-<h3>Are you sure you want to delete this?</h3>
+<h1>Eliminar</h1>
+<h3>Está seguro que desea eliminar?</h3>
 <div>
-    <h4>NotaViewModel</h4>
     <hr />
     <dl class="row">
 
@@ -36,7 +34,7 @@
     
     <form asp-action="Delete">
         @Html.HiddenFor(model => model.IdNota)
-        <input type="submit" value="Delete" class="btn btn-danger" /> |
-        <a asp-action="Index">Back to List</a>
+        <input type="submit" value="Eliminar" class="btn btn-danger" /> |
+        <a asp-action="Index">Regresar a la lista</a>
     </form>
 </div>

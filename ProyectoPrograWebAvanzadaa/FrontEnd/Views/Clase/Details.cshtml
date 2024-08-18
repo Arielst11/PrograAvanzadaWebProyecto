@@ -5,10 +5,9 @@
     Layout = "~/Views/Shared/_Layout_System.cshtml";
 }
 
-<h1>Details</h1>
+<h1>Detalles de la clase seleccionada:</h1>
 
 <div>
-    <h4>ClaseViewModel</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
@@ -32,6 +31,6 @@
     </dl>
 </div>
 <div>
-    @Html.ActionLink("Edit", "Edit", new {  id = Model.IdClase }) |
-    <a asp-action="Index">Back to List</a>
+    @Html.ActionLink("Editar", "Edit", new {  id = Model.IdClase }) |
+    <a asp-action="Index">Regresar a la lista</a>
 </div>
