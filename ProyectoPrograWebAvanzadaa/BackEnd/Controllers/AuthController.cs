@@ -63,11 +63,18 @@ namespace BackEnd.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
             }
 
+
             IdentityUser user = new IdentityUser{
                     Email = model.Email,
                     SecurityStamp = Guid.NewGuid().ToString(),  
                     UserName = model.Username
-            }; 
+
+            };
+
+           // Task resultRole;
+           // resultRole = userManager.AddToRoleAsync(user, "Estudiante");
+
+
 
           var result=  await userManager.CreateAsync(user,model.Password);
             if (!result.Succeeded) {
