@@ -1,0 +1,132 @@
+﻿@model IEnumerable<FrontEnd.Models.UsuarioViewModel>
+
+@{
+    ViewData["Title"] = "Usuarios - ";
+    Layout = "~/Views/Shared/_Layout_System.cshtml";
+
+}
+
+<h1>Lista de Usuarios</h1>
+
+<p>
+    <a asp-action="Create">Crear nuevo usuario</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrimerApellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.SegundoApellido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTipoUsuario)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.IdClase)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PrimerApellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.SegundoApellido)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTipoUsuario)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdClase)
+            </td>
+            <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdUsuario }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.IdUsuario }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdUsuario })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+
+@* 
+                @model IEnumerable<FrontEnd.Models.UsuarioViewModel>
+
+@{
+    ViewData["Title"] = "Usuarios - ";
+    Layout = "~/Views/Shared/_Layout_System.cshtml";
+}
+
+<h1>Lista de Usuarios</h1>
+
+<p>
+    <a asp-action="Create">Crear nuevo usuario</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.IdUsuario)</th>
+            <th>@Html.DisplayNameFor(model => model.Nombre)</th>
+            <th>@Html.DisplayNameFor(model => model.PrimerApellido)</th>
+            <th>@Html.DisplayNameFor(model => model.SegundoApellido)</th>
+            <th>@Html.DisplayNameFor(model => model.IdTipoUsuario)</th>
+            <th>@Html.DisplayNameFor(model => model.IdClase)</th>
+            <th>@Html.DisplayNameFor(model => model.Asistencia)</th> <!-- Nueva columna -->
+            <th>@Html.DisplayNameFor(model => model.Nota)</th> <!-- Nueva columna -->
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.IdUsuario)</td>
+            <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+            <td>@Html.DisplayFor(modelItem => item.PrimerApellido)</td>
+            <td>@Html.DisplayFor(modelItem => item.SegundoApellido)</td>
+            <td>@Html.DisplayFor(modelItem => item.IdTipoUsuario)</td>
+            <td>@Html.DisplayFor(modelItem => item.IdClase)</td>
+            <td>
+                <!-- Mostrar información de Asistencia -->
+                <ul>
+                @foreach (var asistencia in item.Asistencia)
+                {
+                    <li>@asistencia.Fecha.ToShortDateString() - @asistencia.PorcentajeAsistencia%</li>
+                }
+                </ul>
+            </td>
+            <td>
+                <!-- Mostrar información de Nota -->
+                <ul>
+                @foreach (var nota in item.Nota)
+                {
+                    <li>@nota.FechaNota.ToShortDateString() - @nota.ValorNota</li>
+                }
+                </ul>
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.IdUsuario }) |
+                @Html.ActionLink("Detalles", "Details", new { id = item.IdUsuario }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.IdUsuario })
+            </td>
+        </tr>
+    }
+    </tbody>
+</table> *@

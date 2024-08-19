@@ -1,0 +1,55 @@
+﻿@model IEnumerable<FrontEnd.Models.TareaViewModel>
+
+@{
+    ViewData["Title"] = "Tarea - ";
+    Layout = "~/Views/Shared/_Layout_System.cshtml";
+
+}
+
+<h1>Lista de Tareas</h1>
+
+<p>
+    @Html.ActionLink("Registrar nueva tarea ", "Create", "Tarea", null, new { @class = "link-class" })
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdTarea)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreTarea)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DescripcionTarea)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ValorPorcentual)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.IdTarea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreTarea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DescripcionTarea)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ValorPorcentual)
+            </td>
+            <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.IdTarea }) |
+                    @Html.ActionLink("Detalles", "Details", new { id = item.IdTarea }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.IdTarea })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
