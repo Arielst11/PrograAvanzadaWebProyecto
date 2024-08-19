@@ -1,14 +1,19 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entities.Entities;
 
 public partial class Nota
 {
+    [Key]
     public int IdNota { get; set; }
 
-    public int? IdUsuario { get; set; }
+    [ForeignKey("Usuario")]
+    public string? Id { get; set; }
 
+    [ForeignKey("Tarea")]
     public int? IdTarea { get; set; }
 
     public string? NotaTarea { get; set; }

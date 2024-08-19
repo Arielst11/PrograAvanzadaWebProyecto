@@ -33,15 +33,17 @@ builder.Services.AddDbContext<AuthDBContext>(options =>
 
 
 #region Identity
-builder.Services.AddIdentityCore<IdentityUser>()
+builder.Services.AddIdentityCore<Usuario>()
         .AddRoles<IdentityRole>()
-            .AddTokenProvider<DataProtectorTokenProvider<IdentityUser>>("fide")
+            .AddTokenProvider<DataProtectorTokenProvider<Usuario>>("fide")
             .AddEntityFrameworkStores<AuthDBContext>()
             .AddDefaultTokenProviders();
 
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
+    options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    options.User.RequireUniqueEmail = true;
     options.Password.RequiredLength = 5;
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireDigit = false;
@@ -105,8 +107,6 @@ builder.Services.AddScoped<IAsistenciaDAL, AsistenciaDALImpl>();
 builder.Services.AddScoped<IAsistenciaService, AsistenciaService>();
 builder.Services.AddScoped<INotaDAL, NotaDALImpl>();
 builder.Services.AddScoped<INotaService, NotaService>();
-builder.Services.AddScoped<ITipoUsuarioDAL, TipoUsuarioDALImpl>();
-builder.Services.AddScoped<ITipoUsuarioService, TipoUsuarioService>();
 builder.Services.AddScoped<IUnidadDeTrabajo, UnidadDeTrabajo>();
 builder.Services.AddScoped<IUsuarioDAL, UsuarioDALImpl>();
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
@@ -134,5 +134,40 @@ app.UseAuthentication();  // este activa la authentication
 app.UseAuthorization();
 
 app.MapControllers();
+
+using (var scope = app.Services.CreateScope())
+{
+    var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+    var userManager = scope.ServiceProvider.GetRequiredService<UserManager<Usuario>>();
+
+
+    var roles = new[] { "Estudiante", "Profesor", "Admin" };
+
+    foreach (var role in roles)
+    {
+        if (!await roleManager.RoleExistsAsync(role))
+        {
+            await roleManager.CreateAsync(new IdentityRole(role));
+        }
+    }
+
+    var adminUser = await userManager.FindByEmailAsync("admin@example.com");
+    if (adminUser == null)
+    {
+        adminUser = new Usuario
+        {
+            UserName = "admin",
+            Email = "admin@example.com",
+            Nombre = "Admin",
+            PrimerApellido = "User",
+            SegundoApellido = ""
+        };
+        var result = await userManager.CreateAsync(adminUser, "Admin@1234");
+        if (result.Succeeded)
+        {
+            await userManager.AddToRoleAsync(adminUser, "Admin");
+        }
+    }
+}
 
 app.Run();

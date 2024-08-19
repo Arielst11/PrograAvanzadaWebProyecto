@@ -1,11 +1,14 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Entities.Entities;
 
-public partial class Usuario
+public partial class Usuario : IdentityUser
 {
-    public int IdUsuario { get; set; }
+    public string? Id { get; set; }
 
     public string? Nombre { get; set; }
 
@@ -13,15 +16,12 @@ public partial class Usuario
 
     public string? SegundoApellido { get; set; }
 
-    public int? IdTipoUsuario { get; set; }
-
+    [ForeignKey("Clase")]
     public int? IdClase { get; set; }
 
     public virtual ICollection<Asistencia> Asistencia { get; set; } = new List<Asistencia>();
 
     public virtual Clase? IdClaseNavigation { get; set; }
-
-    public virtual TipoUsuario? IdTipoUsuarioNavigation { get; set; }
 
     public virtual ICollection<Nota> Nota { get; set; } = new List<Nota>();
 }

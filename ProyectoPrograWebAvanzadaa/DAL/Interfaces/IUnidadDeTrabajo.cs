@@ -12,7 +12,6 @@ namespace DAL.Interfaces
         IClaseDAL ClaseDAL { get; }
         IAsistenciaDAL AsistenciaDAL { get; }
         INotaDAL NotaDAL { get; }
-        ITipoUsuarioDAL TipoUsuarioDAL { get; }
 
         IUsuarioDAL UsuarioDAL { get; }
 

@@ -12,7 +12,7 @@ namespace BackEnd.Model
 
         public int? PorcentajeAsistencia { get; set; }
 
-        public int? IdUsuario { get; set; }
+        public string? Id { get; set; }
 
         public virtual Usuario? IdUsuarioNavigation { get; set; }
     }

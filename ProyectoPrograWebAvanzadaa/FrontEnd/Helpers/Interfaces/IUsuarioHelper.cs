@@ -5,9 +5,9 @@ namespace FrontEnd.Helpers.Interfaces
     public interface IUsuarioHelper
     {
         List<UsuarioViewModel> GetUsuarios();
-        UsuarioViewModel GetUsuario(int id);
+        UsuarioViewModel GetUsuario(string id);
         UsuarioViewModel Add(UsuarioViewModel usuario);
-        UsuarioViewModel Remove(int id);
+        UsuarioViewModel Remove(string id);
         UsuarioViewModel Update(UsuarioViewModel usuario);
     }
 }

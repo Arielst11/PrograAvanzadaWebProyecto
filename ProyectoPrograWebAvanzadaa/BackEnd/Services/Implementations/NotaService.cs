@@ -25,7 +25,7 @@ namespace BackEnd.Services.Implementations
             Nota entity = new Nota
             {
                 IdNota = nota.IdNota,
-                IdUsuario = nota.IdUsuario,
+                Id = nota.Id,
                 IdTarea = nota.IdTarea,
                 NotaTarea = nota.NotaTarea
 
@@ -39,7 +39,7 @@ namespace BackEnd.Services.Implementations
             NotaModel entity = new NotaModel
             {
                 IdNota = nota.IdNota,
-                IdUsuario = nota.IdUsuario,
+                Id = nota.Id,
                 IdTarea = nota.IdTarea,
                 NotaTarea = nota.NotaTarea
             };

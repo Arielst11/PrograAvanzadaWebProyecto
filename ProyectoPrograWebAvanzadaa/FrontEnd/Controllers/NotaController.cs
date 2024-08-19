@@ -17,7 +17,25 @@ namespace FrontEnd.Controllers
         // GET: NotaController
         public ActionResult Index()
         {
-            return View(NotaHelper.GetNotas());
+            try
+            {
+                var notas = NotaHelper.GetNotas(); // Obtiene las notas
+                return View(notas); // Devuelve la vista con las notas
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                // Maneja el caso en que el usuario no tiene permiso
+                // Puedes redirigir a una vista de error o mostrar un mensaje
+                TempData["ErrorMessage"] = "No tienes permiso para acceder a esta información.";
+                return RedirectToAction("AccessDenied", "Home");
+            }
+            catch (Exception ex)
+            {
+                // Maneja otras posibles excepciones
+                // Loguea el error o muestra un mensaje general
+                TempData["ErrorMessage"] = "Ocurrió un error inesperado.";
+                return RedirectToAction("Error", "Home");
+            }
         }
 
         // GET: NotaController/Details/5

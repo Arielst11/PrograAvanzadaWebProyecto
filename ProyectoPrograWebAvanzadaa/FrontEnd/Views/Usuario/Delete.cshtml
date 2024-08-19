@@ -33,12 +33,6 @@
             @Html.DisplayFor(model => model.SegundoApellido)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.IdTipoUsuario)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.IdTipoUsuario)
-        </dd>
-        <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.IdClase)
         </dt>
         <dd class = "col-sm-10">
@@ -47,7 +41,7 @@
     </dl>
     
     <form asp-action="Delete">
-        @Html.HiddenFor(model => model.IdUsuario)
+        @Html.HiddenFor(model => model.Id)
         <input type="submit" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index">Back to List</a>
     </form>

@@ -41,6 +41,11 @@ namespace DAL.Implementations
             return _Colegiodb2Context.Set<TEntity>().Find(id);
         }
 
+        public TEntity Get(string id)
+        {
+            return _Colegiodb2Context.Set<TEntity>().Find(id);
+        }
+
         public IEnumerable<TEntity> GetAll()
         {
             return _Colegiodb2Context.Set<TEntity>().ToList();

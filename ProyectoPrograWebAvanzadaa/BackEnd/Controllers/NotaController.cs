@@ -2,6 +2,7 @@
 using BackEnd.Model;
 using BackEnd.Services.Interfaces;
 using BackEnd.Services.Implementations;
+using Microsoft.AspNetCore.Authorization;
 
 
 
@@ -24,6 +25,7 @@ namespace BackEnd.Controllers
 
 
         // GET: api/<NotaController>
+        [Authorize(Roles = "Admin,Profesor")]
         [HttpGet]
         public IEnumerable<NotaModel> Get()
         {

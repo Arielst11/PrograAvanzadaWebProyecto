@@ -3,6 +3,7 @@ using BackEnd.Model;
 using BackEnd.Services.Interfaces;
 using Entities.Entities;
 using BackEnd.Services.Implementations;
+using Microsoft.AspNetCore.Authorization;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -20,6 +21,7 @@ namespace BackEnd.Controllers
         }
 
         // GET: api/<AsistenciaController>
+        [Authorize(Roles = "Admin,Profesor")]
         [HttpGet]
         public IEnumerable<AsistenciaModel> Get()
         {

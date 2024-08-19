@@ -6,7 +6,7 @@ namespace BackEnd.Model
     {
         public int IdNota { get; set; }
 
-        public int? IdUsuario { get; set; }
+        public string? Id { get; set; }
 
         public int? IdTarea { get; set; }
 

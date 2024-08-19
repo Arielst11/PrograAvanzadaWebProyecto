@@ -10,7 +10,7 @@
 
         public int? PorcentajeAsistencia { get; set; }
 
-        public int? IdUsuario { get; set; }
+        public string? IdUsuario { get; set; }
 
         public virtual Usuario? IdUsuarioNavigation { get; set; }
     }

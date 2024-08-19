@@ -9,7 +9,7 @@ namespace BackEnd.Model
     public class RegisterModel
     {
         [Required(ErrorMessage = "User Name is required")]
-        public string Username { get; set; }
+        public string UserName { get; set; }
 
         [EmailAddress]
         [Required(ErrorMessage = "Email is required")]
@@ -17,5 +17,15 @@ namespace BackEnd.Model
 
         [Required(ErrorMessage = "Password is required")]
         public string Password { get; set; }
+
+        [Required(ErrorMessage = "Nombre is required")]
+        public string? Nombre { get; set; }
+
+        [Required(ErrorMessage = "Primer Apellido is required")]
+        public string? PrimerApellido { get; set; }
+
+        [Required(ErrorMessage = "Segundo Apellido is required")]
+        public string? SegundoApellido { get; set; }
+        public string Role { get; set; }
     }
 }

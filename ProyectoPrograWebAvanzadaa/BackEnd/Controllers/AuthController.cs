@@ -1,5 +1,6 @@
 ﻿using BackEnd.Model;
 using BackEnd.Services.Interfaces;
+using Entities.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -10,10 +11,10 @@ namespace BackEnd.Controllers
     [ApiController]
     public class AuthController : ControllerBase
     {
-        private readonly UserManager<IdentityUser> userManager;
+        private readonly UserManager<Usuario> userManager;
         private ITokenService TokenService;
 
-        public AuthController(UserManager<IdentityUser> userManager,
+        public AuthController(UserManager<Usuario> userManager,
                                 ITokenService tokenService)
         {
                 this.userManager = userManager;
@@ -27,7 +28,7 @@ namespace BackEnd.Controllers
         {
 
 
-            IdentityUser user = await userManager.FindByNameAsync(model.Username);
+            Usuario user = await userManager.FindByNameAsync(model.Username);
             LoginModel Usuario = new LoginModel();
             if (user != null && await userManager.CheckPasswordAsync(user, model.Password))
             {
@@ -57,22 +58,26 @@ namespace BackEnd.Controllers
         public async Task<IActionResult> Register([FromBody] RegisterModel model)
         {
 
-            var userExists = await userManager.FindByNameAsync(model.Username);
+            var userExists = await userManager.FindByNameAsync(model.UserName);
 
             if (userExists != null) {
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "User already exists!" });
             }
 
 
-            IdentityUser user = new IdentityUser{
+            Usuario user = new Usuario{
                     Email = model.Email,
                     SecurityStamp = Guid.NewGuid().ToString(),  
-                    UserName = model.Username
+                    UserName = model.UserName,
+                    Nombre = model.Nombre,
+                    PrimerApellido = model.PrimerApellido,
+                    SegundoApellido = model.SegundoApellido
+
 
             };
 
          //  Task resultRole;
-          // resultRole = userManager.AddToRoleAsync(user, "Estudiante"); //role asignation.
+          //resultRole = userManager.AddToRoleAsync(user, "Estudiante"); //role asignation.
 
 
 

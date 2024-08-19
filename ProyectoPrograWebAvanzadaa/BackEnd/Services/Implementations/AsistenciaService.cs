@@ -28,7 +28,7 @@ namespace BackEnd.Services.Implementations
                 Fecha = asistencia.Fecha,
                 AsistenciaUsuario = asistencia.AsistenciaUsuario,
                 PorcentajeAsistencia = asistencia.PorcentajeAsistencia,
-                IdUsuario = asistencia.IdUsuario
+                Id = asistencia.Id
             };
 
             return entity;
@@ -42,7 +42,7 @@ namespace BackEnd.Services.Implementations
                 Fecha = asistencia.Fecha,
                 AsistenciaUsuario = asistencia.AsistenciaUsuario,
                 PorcentajeAsistencia = asistencia.PorcentajeAsistencia,
-                IdUsuario = asistencia.IdUsuario
+                Id = asistencia.Id
             };
 
             return entity;
