@@ -4,7 +4,7 @@
     {
         public int IdNota { get; set; }
 
-        public string? IdUsuario { get; set; }
+        public string? Id { get; set; }
 
         public int? IdTarea { get; set; }
 

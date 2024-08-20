@@ -109,6 +109,9 @@ public partial class Colegiodb2Context : DbContext
                 .HasMaxLength(50)
                 .IsUnicode(false);
 
+            entity.Property(e => e.Id)
+                    .HasDefaultValueSql("NEWID()"); // Para SQL Server
+
             entity.HasOne(d => d.IdClaseNavigation).WithMany(p => p.Usuarios)
                 .HasForeignKey(d => d.IdClase)
                 .HasConstraintName("FK__USUARIO__IdClase__44FF419A");

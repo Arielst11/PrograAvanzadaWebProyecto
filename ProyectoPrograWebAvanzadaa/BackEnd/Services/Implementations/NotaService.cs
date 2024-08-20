@@ -22,6 +22,11 @@ namespace BackEnd.Services.Implementations
 
         private Nota Convertir (NotaModel nota)
         {
+            if (nota == null)
+            {
+                throw new ArgumentNullException(nameof(nota), "El objeto Nota es null.");
+            }
+
             Nota entity = new Nota
             {
                 IdNota = nota.IdNota,
@@ -36,6 +41,11 @@ namespace BackEnd.Services.Implementations
 
         private NotaModel Convertir(Nota nota)
         {
+            if (nota == null)
+            {
+                throw new ArgumentNullException(nameof(nota), "El objeto Nota es null.");
+            }
+
             NotaModel entity = new NotaModel
             {
                 IdNota = nota.IdNota,

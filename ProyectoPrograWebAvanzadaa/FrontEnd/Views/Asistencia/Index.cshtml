@@ -26,7 +26,7 @@
                 @Html.DisplayNameFor(model => model.PorcentajeAsistencia)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.IdUsuario)
+                @Html.DisplayNameFor(model => model.Id)
             </th>
             <th></th>
         </tr>
@@ -47,7 +47,7 @@
                 @Html.DisplayFor(modelItem => item.PorcentajeAsistencia)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.IdUsuario)
+                    @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
                     @Html.ActionLink("Editar", "Edit", new { id = item.IdAsistencia }) |

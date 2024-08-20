@@ -18,7 +18,7 @@ namespace FrontEnd.Models
         public int? PorcentajeAsistencia { get; set; }
 
         [DisplayName("Id Usuario")]
-        public string? IdUsuario { get; set; }
+        public string? Id { get; set; }
 
         public virtual Usuario? IdUsuarioNavigation { get; set; }
         

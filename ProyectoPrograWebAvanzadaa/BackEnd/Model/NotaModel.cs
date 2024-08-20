@@ -12,8 +12,8 @@ namespace BackEnd.Model
 
         public string? NotaTarea { get; set; }
 
-        public virtual Tarea? IdTareaNavigation { get; set; }
+        public virtual Tarea? Tarea { get; set; }
 
-        public virtual Usuario? IdUsuarioNavigation { get; set; }
+        public virtual Usuario? Usuario { get; set; }
     }
 }

@@ -28,14 +28,31 @@ namespace FrontEnd.Helpers.Implementations
 
         private AsistenciaViewModel Convertir(Asistencia asistencia)
         {
-            return new AsistenciaViewModel
+            try
             {
-                IdAsistencia = asistencia.IdAsistencia,
-                Fecha = asistencia.Fecha,
-                AsistenciaUsuario = asistencia.AsistenciaUsuario,
-                PorcentajeAsistencia = asistencia.PorcentajeAsistencia,
-                IdUsuario = asistencia.IdUsuario
-            };
+                if (asistencia == null)
+                {
+                    // Si asistencia es null, retorna un objeto vacío o maneja el caso según sea necesario
+                    return null;
+                }
+                return new AsistenciaViewModel
+                {  
+                    IdAsistencia = asistencia.IdAsistencia,
+                    Fecha = asistencia.Fecha,
+                    AsistenciaUsuario = asistencia.AsistenciaUsuario,
+                    PorcentajeAsistencia = asistencia.PorcentajeAsistencia,
+                    Id = asistencia.Id
+                };
+            }
+            catch (Exception ex)
+            {
+                // Manejo de excepciones, el objeto puede no ser creado correctamente
+                // Opcionalmente podrías registrar el error o manejarlo de otra forma
+                // Por ejemplo: _logger.LogError(ex, "Error al convertir asistencia a AsistenciaViewModel.");
+
+                // Retorna un objeto vacío o nulo si ocurre un error para evitar que se caiga la aplicación
+                return null; // o return null;
+            }
         }
 
         private Asistencia Convertir(AsistenciaViewModel asistencia)
@@ -46,7 +63,7 @@ namespace FrontEnd.Helpers.Implementations
                 Fecha = asistencia.Fecha,
                 AsistenciaUsuario = asistencia.AsistenciaUsuario,
                 PorcentajeAsistencia = asistencia.PorcentajeAsistencia,
-                IdUsuario = asistencia.IdUsuario
+                Id = asistencia.Id
             };
         }
 

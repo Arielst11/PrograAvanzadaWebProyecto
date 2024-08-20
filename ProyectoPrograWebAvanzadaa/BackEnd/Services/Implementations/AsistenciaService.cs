@@ -36,16 +36,30 @@ namespace BackEnd.Services.Implementations
 
         private AsistenciaModel Convertir(Asistencia asistencia)
         {
-            AsistenciaModel entity = new AsistenciaModel
+            if (asistencia == null)
             {
-                IdAsistencia = asistencia.IdAsistencia,
-                Fecha = asistencia.Fecha,
-                AsistenciaUsuario = asistencia.AsistenciaUsuario,
-                PorcentajeAsistencia = asistencia.PorcentajeAsistencia,
-                Id = asistencia.Id
-            };
+                // Retorna null o un valor por defecto si el objeto asistencia es null
+                return null; // O new AsistenciaModel(); si prefieres un objeto vacío
+            }
 
-            return entity;
+            try
+            {
+                AsistenciaModel entity = new AsistenciaModel
+                {
+                    IdAsistencia = asistencia.IdAsistencia,
+                    Fecha = asistencia.Fecha,
+                    AsistenciaUsuario = asistencia.AsistenciaUsuario,
+                    PorcentajeAsistencia = asistencia.PorcentajeAsistencia,
+                    Id = asistencia.Id
+                };
+                return entity;
+            }
+            catch
+            {
+                // Captura cualquier excepción, pero no hace nada con ella
+                // Retorna null o un valor por defecto si ocurre un error
+                return null; // O new AsistenciaModel(); si prefieres un objeto vacío
+            }
         }
 
 

@@ -4,6 +4,7 @@ using Entities.Entities;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace BackEnd.Controllers
 {
@@ -65,9 +66,9 @@ namespace BackEnd.Controllers
             }
 
 
-            Usuario user = new Usuario{
-                    Email = model.Email,
-                    SecurityStamp = Guid.NewGuid().ToString(),  
+            Usuario user = new Usuario
+            {
+                    Email = model.Email, 
                     UserName = model.UserName,
                     Nombre = model.Nombre,
                     PrimerApellido = model.PrimerApellido,
@@ -76,28 +77,41 @@ namespace BackEnd.Controllers
 
             };
 
-         //  Task resultRole;
-          //resultRole = userManager.AddToRoleAsync(user, "Estudiante"); //role asignation.
+            //  Task resultRole;
+            //resultRole = userManager.AddToRoleAsync(user, "Estudiante"); //role asignation.
 
 
-
-            var result=  await userManager.CreateAsync(user,model.Password);
-            if (!result.Succeeded) {
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "INternal server Error" });
-
-            }
-
-
-            var roleAssign = await userManager.AddToRoleAsync(user, "Profesor");
-            if (!roleAssign.Succeeded)
+            try
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Role could not be assigned" });
+                var result = await userManager.CreateAsync(user, model.Password);
+                if (!result.Succeeded)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "INternal server Error" });
 
+                }
+
+
+                var roleAssign = await userManager.AddToRoleAsync(user, "Profesor");
+                if (!roleAssign.Succeeded)
+                {
+                    return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Role could not be assigned" });
+
+                }
+
+
+
+                return Ok(new Response { Status = "Success", Message = "Usuario Creado" });
             }
-
-
-
-            return Ok(new Response {Status= "Success", Message = "Usuario Creado" });
+            catch (DbUpdateException ex)
+            {
+                // Manejo del error con detalles adicionales
+                Console.WriteLine($"Error al actualizar la base de datos: {ex.Message}");
+                if (ex.InnerException != null)
+                {
+                    Console.WriteLine($"Detalle del error interno: {ex.InnerException.Message}");
+                }
+                return Ok(new Response { Status = "Fail", Message = "Usuario no Creado" });
+            }
 
         }
 

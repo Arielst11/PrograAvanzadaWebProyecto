@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -8,7 +9,6 @@ namespace Entities.Entities;
 
 public partial class Usuario : IdentityUser
 {
-    public string? Id { get; set; }
 
     public string? Nombre { get; set; }
 

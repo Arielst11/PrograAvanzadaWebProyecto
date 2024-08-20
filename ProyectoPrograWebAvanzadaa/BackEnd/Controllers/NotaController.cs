@@ -33,7 +33,6 @@ namespace BackEnd.Controllers
             return _notaService.Get();
         }
 
-        [Authorize]
         // GET api/<NotaController>/5
         [HttpGet("{id}")]
         public NotaModel Get(int id)
@@ -42,7 +41,6 @@ namespace BackEnd.Controllers
 
         }
 
-        [Authorize]
         // POST api/<NotaController>
         [HttpPost]
         public NotaModel Post([FromBody] NotaModel nota)
@@ -51,7 +49,7 @@ namespace BackEnd.Controllers
             return nota;
 
         }
-        [Authorize]
+
         // PUT api/<NotaController>/5
         [HttpPut]
         public NotaModel Put([FromBody] NotaModel nota)

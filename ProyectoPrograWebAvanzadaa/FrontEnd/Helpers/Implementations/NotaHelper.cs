@@ -32,7 +32,7 @@ namespace FrontEnd.Helpers.Implementations
             return new NotaViewModel
             {
                 IdNota = nota.IdNota,
-                IdUsuario = nota.IdUsuario,
+                Id = nota.Id,
                 IdTarea = nota.IdTarea,
                 NotaTarea = nota.NotaTarea
             };
@@ -43,7 +43,7 @@ namespace FrontEnd.Helpers.Implementations
             return new Nota
             {
                 IdNota = nota.IdNota,
-                IdUsuario = nota.IdUsuario,
+                Id = nota.Id,
                 IdTarea = nota.IdTarea,
                 NotaTarea = nota.NotaTarea
             };
