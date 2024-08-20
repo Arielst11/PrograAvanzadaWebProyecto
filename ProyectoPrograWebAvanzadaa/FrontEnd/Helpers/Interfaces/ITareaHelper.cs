@@ -9,5 +9,7 @@ namespace FrontEnd.Helpers.Interfaces
         TareaViewModel Add(TareaViewModel tarea);
         TareaViewModel Remove(int id);
         TareaViewModel Update(TareaViewModel tarea);
+
+        public string Token { get; set; }
     }
 }

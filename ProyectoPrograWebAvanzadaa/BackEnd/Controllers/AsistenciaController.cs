@@ -21,7 +21,8 @@ namespace BackEnd.Controllers
         }
 
         // GET: api/<AsistenciaController>
-        [Authorize(Roles = "Admin,Profesor")]
+        //[Authorize(Roles = "Admin,Profesor")]
+        [Authorize]
         [HttpGet]
         public IEnumerable<AsistenciaModel> Get()
         {

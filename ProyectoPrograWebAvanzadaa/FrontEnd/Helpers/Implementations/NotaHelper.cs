@@ -10,6 +10,8 @@ namespace FrontEnd.Helpers.Implementations
     {
         private readonly IServiceRepository _serviceRepository;
 
+        public string Token { get; set; }
+
         public NotaHelper(IServiceRepository serviceRepository)
         {
             _serviceRepository = serviceRepository;
@@ -78,6 +80,9 @@ namespace FrontEnd.Helpers.Implementations
 
         public NotaViewModel GetNota(int id)
         {
+
+            _serviceRepository.Client.DefaultRequestHeaders.Authorization =
+                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
             HttpResponseMessage responseMessage = _serviceRepository.GetResponse("api/nota/" + id.ToString());
             Nota resultado = new Nota();
 
@@ -92,6 +97,8 @@ namespace FrontEnd.Helpers.Implementations
 
         public NotaViewModel Remove(int id)
         {
+            _serviceRepository.Client.DefaultRequestHeaders.Authorization =
+                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
             HttpResponseMessage responseMessage = _serviceRepository.DeleteResponse("api/nota/" + id.ToString());
             Nota resultado = new Nota();
 
@@ -104,7 +111,10 @@ namespace FrontEnd.Helpers.Implementations
         }
 
         public NotaViewModel Update(NotaViewModel nota)
+
         {
+            _serviceRepository.Client.DefaultRequestHeaders.Authorization =
+                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
             HttpResponseMessage responseMessage = _serviceRepository.PutResponse("api/nota", Convertir(nota));
             if (responseMessage != null)
             {

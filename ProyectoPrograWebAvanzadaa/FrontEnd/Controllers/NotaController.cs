@@ -1,5 +1,7 @@
-﻿using FrontEnd.Helpers.Interfaces;
+﻿using FrontEnd.Helpers.Implementations;
+using FrontEnd.Helpers.Interfaces;
 using FrontEnd.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -39,25 +41,31 @@ namespace FrontEnd.Controllers
         }
 
         // GET: NotaController/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
+            NotaHelper.Token = HttpContext.Session.GetString("token");
             NotaViewModel nota = NotaHelper.GetNota(id);
             return View(nota);
         }
 
         // GET: NotaController/Create
+        [Authorize]
         public ActionResult Create()
         {
+            
             return View();
         }
 
         // POST: NotaController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create(NotaViewModel nota)
         {
             try
             {
+                NotaHelper.Token = HttpContext.Session.GetString("token");
                 _ = NotaHelper.Add(nota);
                 return RedirectToAction(nameof(Index));
             }
@@ -68,19 +76,23 @@ namespace FrontEnd.Controllers
         }
 
         // GET: NotaController/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
         {
+            NotaHelper.Token = HttpContext.Session.GetString("token");
             NotaViewModel nota = NotaHelper.GetNota(id);
             return View(nota);
         }
 
         // POST: NotaController/Edit/5
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(NotaViewModel nota)
         {
             try
             {
+                NotaHelper.Token = HttpContext.Session.GetString("token");
                 _ = NotaHelper.Update(nota);
                 return RedirectToAction(nameof(Index));
             }
@@ -91,19 +103,24 @@ namespace FrontEnd.Controllers
         }
 
         // GET: NotaController/Delete/5
+        [Authorize]
         public ActionResult Delete(int id)
         {
+            NotaHelper.Token = HttpContext.Session.GetString("token");
             NotaViewModel nota = NotaHelper.GetNota(id);
             return View(nota);
         }
 
         // POST: NotaController/Delete/5
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Delete(NotaViewModel nota)
         {
+
             try
             {
+                NotaHelper.Token = HttpContext.Session.GetString("token");
                 _ = NotaHelper.Remove(nota.IdNota);
                 return RedirectToAction(nameof(Index));
             }

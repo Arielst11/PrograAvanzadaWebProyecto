@@ -26,6 +26,6 @@ namespace BackEnd.Model
 
         [Required(ErrorMessage = "Segundo Apellido is required")]
         public string? SegundoApellido { get; set; }
-        public string Role { get; set; }
+        //public string Role { get; set; }
     }
 }

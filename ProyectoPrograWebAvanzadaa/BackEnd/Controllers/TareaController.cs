@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using BackEnd.Model;
 using BackEnd.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 
 
@@ -31,6 +32,7 @@ namespace BackEnd.Controllers
 
 
         // GET api/<TareaController>/5
+        [Authorize]
         [HttpGet("{id}")]
         public TareaModel Get(int id)
         {
@@ -40,6 +42,7 @@ namespace BackEnd.Controllers
 
 
         // POST api/<TareaController>
+        [Authorize]
         [HttpPost]
         public TareaModel Post([FromBody] TareaModel tarea)
         {
@@ -49,6 +52,7 @@ namespace BackEnd.Controllers
         }
 
         // PUT api/<TareaController>/5
+        [Authorize]
         [HttpPut]
         public TareaModel Put([FromBody] TareaModel tarea)
         {
@@ -58,6 +62,7 @@ namespace BackEnd.Controllers
         }
 
         // DELETE api/<TareaController>/5
+        [Authorize]
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

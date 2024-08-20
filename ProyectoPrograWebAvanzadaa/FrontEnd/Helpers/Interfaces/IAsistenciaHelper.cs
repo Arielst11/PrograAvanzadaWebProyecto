@@ -9,5 +9,7 @@ namespace FrontEnd.Helpers.Interfaces
         AsistenciaViewModel Add(AsistenciaViewModel asistencia);
         AsistenciaViewModel Remove(int id);
         AsistenciaViewModel Update(AsistenciaViewModel asistencia);
+
+        public string Token { get; set; }
     }
 }

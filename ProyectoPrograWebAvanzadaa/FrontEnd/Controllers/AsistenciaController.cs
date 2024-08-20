@@ -1,11 +1,14 @@
 ﻿using FrontEnd.Helpers.Implementations;
 using FrontEnd.Helpers.Interfaces;
 using FrontEnd.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FrontEnd.Controllers
 {
+
+    
     public class AsistenciaController : Controller
     {
 
@@ -17,9 +20,37 @@ namespace FrontEnd.Controllers
         }
 
         // GET: AsistenciaController
+        [Authorize]
         public ActionResult Index()
         {
-            return View(AsistenciaHelper.GetAsistencias());
+
+            
+
+            try
+            {
+                AsistenciaHelper.Token = HttpContext.Session.GetString("token");
+                return View(AsistenciaHelper.GetAsistencias());
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                // Maneja el caso en que el usuario no tiene permiso
+                // Puedes redirigir a una vista de error o mostrar un mensaje
+                TempData["ErrorMessage"] = "No tienes permiso para acceder a esta información.";
+                return RedirectToAction("AccessDenied", "Home");
+            }
+            catch (Exception ex)
+            {
+                // Maneja otras posibles excepciones
+                // Loguea el error o muestra un mensaje general
+                TempData["ErrorMessage"] = "Ocurrió un error inesperado.";
+                return RedirectToAction("Error", "Home");
+            }
+
+
+
+
+
+
         }
 
         // GET: AsistenciaController/Details/5
@@ -30,6 +61,7 @@ namespace FrontEnd.Controllers
         }
 
         // GET: AsistenciaController/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();

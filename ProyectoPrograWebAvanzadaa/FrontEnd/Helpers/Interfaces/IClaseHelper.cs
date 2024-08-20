@@ -9,5 +9,7 @@ namespace FrontEnd.Helpers.Interfaces
         ClaseViewModel Add(ClaseViewModel clase);
         ClaseViewModel Remove(int id);
         ClaseViewModel Update(ClaseViewModel clase);
+
+        public string Token { get; set; }
     }
 }

@@ -9,5 +9,7 @@ namespace FrontEnd.Helpers.Interfaces
         UsuarioViewModel Add(UsuarioViewModel usuario);
         UsuarioViewModel Remove(string id);
         UsuarioViewModel Update(UsuarioViewModel usuario);
+
+        public string Token { get; set; }
     }
 }

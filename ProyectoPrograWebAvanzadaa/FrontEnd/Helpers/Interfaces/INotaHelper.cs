@@ -9,5 +9,7 @@ namespace FrontEnd.Helpers.Interfaces
         NotaViewModel Add(NotaViewModel nota);
         NotaViewModel Remove(int id);
         NotaViewModel Update(NotaViewModel nota);
+
+        public string Token { get; set; }
     }
 }

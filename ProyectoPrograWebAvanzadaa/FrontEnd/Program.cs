@@ -1,11 +1,17 @@
 using FrontEnd.Helpers.Implementations;
 using FrontEnd.Helpers.Interfaces;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+builder.Services.AddAuthentication
+   (CookieAuthenticationDefaults.AuthenticationScheme)
+           .AddCookie(x => x.LoginPath = "/account/login");
 
+
+builder.Services.AddSession();
 
 
 
@@ -17,6 +23,7 @@ builder.Services.AddScoped<INotaHelper, NotaHelper>();
 builder.Services.AddScoped<ITareaHelper, TareaHelper>();
 builder.Services.AddScoped<ITipoUsuarioHelper, TipoUsuarioHelper>();
 builder.Services.AddScoped<IUsuarioHelper, UsuarioHelper>();
+builder.Services.AddScoped<ISecurityHelper, SecurityHelper>();
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
@@ -36,6 +43,8 @@ if (!app.Environment.IsDevelopment())
 app.UseStaticFiles();
 
 app.UseRouting();
+
+app.UseSession();
 
 app.UseAuthorization();
 

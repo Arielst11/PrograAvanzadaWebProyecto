@@ -2,6 +2,7 @@
 using FrontEnd.Helpers.Implementations;
 using FrontEnd.Helpers.Interfaces;
 using FrontEnd.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -23,13 +24,16 @@ namespace FrontEnd.Controllers
         }
 
         // GET: ClaseController/Details/5
+        [Authorize]
         public ActionResult Details(int id)
         {
+            ClaseHelper.Token = HttpContext.Session.GetString("token");
             ClaseViewModel clase = ClaseHelper.GetClase(id);
             return View(clase);
         }
 
         // GET: ClaseController/Create
+        [Authorize]
         public ActionResult Create()
         {
             return View();
@@ -38,10 +42,12 @@ namespace FrontEnd.Controllers
         // POST: ClaseController/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Create(ClaseViewModel clase)
         {
             try
             {
+                ClaseHelper.Token = HttpContext.Session.GetString("token");
                 _ = ClaseHelper.Add(clase);
                 return RedirectToAction(nameof(Index));
             }
@@ -52,8 +58,11 @@ namespace FrontEnd.Controllers
         }
 
         // GET: ClaseController/Edit/5
+        [Authorize]
         public ActionResult Edit(int id)
+
         {
+            ClaseHelper.Token = HttpContext.Session.GetString("token");
             ClaseViewModel clase = ClaseHelper.GetClase(id);
             return View(clase);
         }
@@ -61,10 +70,12 @@ namespace FrontEnd.Controllers
         // POST: ClaseController/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Edit(ClaseViewModel clase)
         {
             try
             {
+                ClaseHelper.Token = HttpContext.Session.GetString("token");
                 _ = ClaseHelper.Update(clase);
                 return RedirectToAction(nameof(Index));
             }
@@ -75,8 +86,10 @@ namespace FrontEnd.Controllers
         }
 
         // GET: ClaseController/Delete/5
+        [Authorize]
         public ActionResult Delete(int id)
         {
+            ClaseHelper.Token = HttpContext.Session.GetString("token");
             ClaseViewModel clase = ClaseHelper.GetClase(id);
             return View(clase);
         }
@@ -84,10 +97,12 @@ namespace FrontEnd.Controllers
         // POST: ClaseController/Delete/5
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize]
         public ActionResult Delete(ClaseViewModel clase)
         {
             try
             {
+                ClaseHelper.Token = HttpContext.Session.GetString("token");
                 _ = ClaseHelper.Remove(clase.IdClase);
                 return RedirectToAction(nameof(Index));
             }

@@ -9,6 +9,8 @@ namespace FrontEnd.Helpers.Implementations
     {
         private readonly IServiceRepository _serviceRepository;
 
+        public string Token { get; set; }
+
         public ClaseHelper(IServiceRepository serviceRepository)
         {
             _serviceRepository = serviceRepository;
@@ -16,6 +18,8 @@ namespace FrontEnd.Helpers.Implementations
 
         public ClaseViewModel Add(ClaseViewModel clase)
         {
+            _serviceRepository.Client.DefaultRequestHeaders.Authorization =
+                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
             HttpResponseMessage responseMessage = _serviceRepository.PostResponse("api/clase", Convertir(clase));
             if (responseMessage != null)
             {
@@ -65,7 +69,10 @@ namespace FrontEnd.Helpers.Implementations
         }
 
         public ClaseViewModel GetClase(int id)
+
         {
+            _serviceRepository.Client.DefaultRequestHeaders.Authorization =
+                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
             HttpResponseMessage responseMessage = _serviceRepository.GetResponse("api/clase/" + id.ToString());
             Clase resultado = new Clase();
 
@@ -80,6 +87,8 @@ namespace FrontEnd.Helpers.Implementations
 
         public ClaseViewModel Remove(int id)
         {
+            _serviceRepository.Client.DefaultRequestHeaders.Authorization =
+                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
             HttpResponseMessage responseMessage = _serviceRepository.DeleteResponse("api/clase/" + id.ToString());
             Clase resultado = new Clase();
 
@@ -93,6 +102,8 @@ namespace FrontEnd.Helpers.Implementations
 
         public ClaseViewModel Update(ClaseViewModel clase)
         {
+            _serviceRepository.Client.DefaultRequestHeaders.Authorization =
+                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
             HttpResponseMessage responseMessage = _serviceRepository.PutResponse("api/clase", Convertir(clase));
             if (responseMessage != null)
             {

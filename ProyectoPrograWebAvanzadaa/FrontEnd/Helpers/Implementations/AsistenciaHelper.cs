@@ -9,6 +9,8 @@ namespace FrontEnd.Helpers.Implementations
     {
         private readonly IServiceRepository _serviceRepository;
 
+        public string Token { get; set; }
+
         public AsistenciaHelper(IServiceRepository serviceRepository)
         {
             _serviceRepository = serviceRepository;
@@ -50,6 +52,11 @@ namespace FrontEnd.Helpers.Implementations
 
         public List<AsistenciaViewModel> GetAsistencias()
         {
+
+
+            // -------------------------------------> se manda el token en el header del request
+            _serviceRepository.Client.DefaultRequestHeaders.Authorization =
+                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
             HttpResponseMessage responseMessage = _serviceRepository.GetResponse("api/asistencia");
             List<Asistencia> resultado = new List<Asistencia>();
 

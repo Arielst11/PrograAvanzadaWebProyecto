@@ -9,6 +9,8 @@ namespace FrontEnd.Helpers.Implementations
     {
         private readonly IServiceRepository _serviceRepository;
 
+        public string Token { get; set; }
+
         public TareaHelper(IServiceRepository serviceRepository)
         {
             _serviceRepository = serviceRepository;
@@ -16,6 +18,8 @@ namespace FrontEnd.Helpers.Implementations
 
         public TareaViewModel Add(TareaViewModel tarea)
         {
+            _serviceRepository.Client.DefaultRequestHeaders.Authorization =
+                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
             HttpResponseMessage responseMessage = _serviceRepository.PostResponse("api/tarea", Convertir(tarea));
             if (responseMessage != null)
             {
@@ -68,6 +72,8 @@ namespace FrontEnd.Helpers.Implementations
 
         public TareaViewModel GetTarea(int id)
         {
+            _serviceRepository.Client.DefaultRequestHeaders.Authorization =
+                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
             HttpResponseMessage responseMessage = _serviceRepository.GetResponse("api/tarea/" + id.ToString());
             Tarea resultado = new Tarea();
 
@@ -82,6 +88,8 @@ namespace FrontEnd.Helpers.Implementations
 
         public TareaViewModel Remove(int id)
         {
+            _serviceRepository.Client.DefaultRequestHeaders.Authorization =
+                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
             HttpResponseMessage responseMessage = _serviceRepository.DeleteResponse("api/tarea/" + id.ToString());
             Tarea resultado = new Tarea();
 
@@ -95,6 +103,8 @@ namespace FrontEnd.Helpers.Implementations
 
         public TareaViewModel Update(TareaViewModel tarea)
         {
+            _serviceRepository.Client.DefaultRequestHeaders.Authorization =
+                 new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", Token);
             HttpResponseMessage responseMessage = _serviceRepository.PutResponse("api/tarea", Convertir(tarea));
             if (responseMessage != null)
             {

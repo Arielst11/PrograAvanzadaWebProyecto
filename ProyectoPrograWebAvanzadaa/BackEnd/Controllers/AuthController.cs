@@ -88,7 +88,7 @@ namespace BackEnd.Controllers
             }
 
 
-            var roleAssign = await userManager.AddToRoleAsync(user, "Estudiante");
+            var roleAssign = await userManager.AddToRoleAsync(user, "Profesor");
             if (!roleAssign.Succeeded)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Role could not be assigned" });

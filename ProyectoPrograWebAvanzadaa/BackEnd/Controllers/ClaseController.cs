@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using BackEnd.Model;
 using BackEnd.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 
 
 
@@ -29,8 +30,8 @@ namespace BackEnd.Controllers
             return _claseService.Get();
         }
 
-
         // GET api/<ClaseController>/5
+        [Authorize]
         [HttpGet("{id}")]
         public ClaseModel Get(int id)
         {
@@ -38,8 +39,8 @@ namespace BackEnd.Controllers
 
         }
 
-
         // POST api/<TareaController>
+        [Authorize]
         [HttpPost]
         public ClaseModel Post([FromBody] ClaseModel clase)
         {
@@ -49,6 +50,7 @@ namespace BackEnd.Controllers
         }
 
         // PUT api/<ClaseController>/5
+        [Authorize]
         [HttpPut]
         public ClaseModel Put(int id, [FromBody] ClaseModel clase)
         {
@@ -58,6 +60,7 @@ namespace BackEnd.Controllers
         }
 
         // DELETE api/<ClaseController>/5
+        [Authorize]
         [HttpDelete("{id}")]
         public void Delete(int id)
         {

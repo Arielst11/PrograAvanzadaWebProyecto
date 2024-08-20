@@ -9,6 +9,8 @@ namespace FrontEnd.Helpers.Implementations
     {
          IServiceRepository _serviceRepository;
 
+        public string Token { get; set; }
+
         public UsuarioHelper(IServiceRepository serviceRepository)
         {
            this._serviceRepository = serviceRepository;
