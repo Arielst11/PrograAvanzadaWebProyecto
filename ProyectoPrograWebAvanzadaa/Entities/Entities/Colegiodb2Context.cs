@@ -23,9 +23,7 @@ public partial class Colegiodb2Context : DbContext
 
     public virtual DbSet<Tarea> Tareas { get; set; }
 
-    public virtual DbSet<TipoUsuario> TipoUsuarios { get; set; }
-
-    public virtual DbSet<Usuario> Usuarios { get; set; }
+    public virtual DbSet<Usuario> AspNetUsers { get; set; }
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
@@ -44,7 +42,7 @@ public partial class Colegiodb2Context : DbContext
             entity.ToTable("ASISTENCIA");
 
             entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.Asistencia)
-                .HasForeignKey(d => d.IdUsuario)
+                .HasForeignKey(d => d.Id)
                 .HasConstraintName("FK__ASISTENCI__IdUsu__412EB0B6");
         });
 
@@ -77,7 +75,7 @@ public partial class Colegiodb2Context : DbContext
                 .HasConstraintName("FK__NOTA__IdTarea__4316F928");
 
             entity.HasOne(d => d.IdUsuarioNavigation).WithMany(p => p.Nota)
-                .HasForeignKey(d => d.IdUsuario)
+                .HasForeignKey(d => d.Id)
                 .HasConstraintName("FK__NOTA__IdUsuario__4222D4EF");
         });
 
@@ -95,23 +93,11 @@ public partial class Colegiodb2Context : DbContext
                 .IsUnicode(false);
         });
 
-        modelBuilder.Entity<TipoUsuario>(entity =>
-        {
-            entity.HasKey(e => e.IdTipoUsuario).HasName("PK__TIPO_USU__CA04062BE10AFACF");
-
-            entity.ToTable("TIPO_USUARIO");
-
-            entity.Property(e => e.TipoUsuario1)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("TipoUsuario");
-        });
-
         modelBuilder.Entity<Usuario>(entity =>
         {
-            entity.HasKey(e => e.IdUsuario).HasName("PK__USUARIO__5B65BF9704C5191E");
+            entity.HasKey(e => e.Id).HasName("PK__USUARIO__5B65BF9704C5191E");
 
-            entity.ToTable("USUARIO");
+            entity.ToTable("AspNetUsers");
 
             entity.Property(e => e.Nombre)
                 .HasMaxLength(50)
@@ -126,10 +112,6 @@ public partial class Colegiodb2Context : DbContext
             entity.HasOne(d => d.IdClaseNavigation).WithMany(p => p.Usuarios)
                 .HasForeignKey(d => d.IdClase)
                 .HasConstraintName("FK__USUARIO__IdClase__44FF419A");
-
-            entity.HasOne(d => d.IdTipoUsuarioNavigation).WithMany(p => p.Usuarios)
-                .HasForeignKey(d => d.IdTipoUsuario)
-                .HasConstraintName("FK__USUARIO__IdTipoU__440B1D61");
         });
 
         OnModelCreatingPartial(modelBuilder);

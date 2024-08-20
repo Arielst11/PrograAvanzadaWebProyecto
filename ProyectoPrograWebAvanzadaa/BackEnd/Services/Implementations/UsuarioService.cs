@@ -19,17 +19,16 @@ namespace BackEnd.Services.Implementations
         }
 
 
-
-
         private Usuario Convertir(UsuarioModel usuario)
         {
             Usuario entity = new Usuario
             {
-                IdUsuario = usuario.IdUsuario,
+                Id = usuario.Id,
                 Nombre = usuario.Nombre,
+                UserName = usuario.Username,
+                Email = usuario.Email,
                 PrimerApellido = usuario.PrimerApellido,
                 SegundoApellido = usuario.SegundoApellido,
-                IdTipoUsuario = usuario.IdTipoUsuario,
                 IdClase = usuario.IdClase,
                 Nota = usuario.Nota.ToList(),
                 Asistencia= usuario.Asistencia.ToList()
@@ -43,11 +42,12 @@ namespace BackEnd.Services.Implementations
         {
             UsuarioModel entity = new UsuarioModel
             {
-                IdUsuario = usuario.IdUsuario,
+                Id = usuario.Id,
                 Nombre = usuario.Nombre,
+                Username = usuario.UserName,
+                Email = usuario.Email,
                 PrimerApellido = usuario.PrimerApellido,
                 SegundoApellido = usuario.SegundoApellido,
-                IdTipoUsuario = usuario.IdTipoUsuario,
                 IdClase = usuario.IdClase,
                 Nota = usuario.Nota.ToList(),
                 Asistencia = usuario.Asistencia.ToList()
@@ -64,7 +64,7 @@ namespace BackEnd.Services.Implementations
             return _unidadDeTrabajo.Complete();
         }
 
-        public UsuarioModel Get(int id)
+        public UsuarioModel Get(string id)
         {
             return Convertir(_unidadDeTrabajo.UsuarioDAL.Get(id));
         }

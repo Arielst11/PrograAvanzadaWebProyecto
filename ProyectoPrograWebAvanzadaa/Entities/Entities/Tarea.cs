@@ -1,10 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace Entities.Entities;
 
 public partial class Tarea
 {
+    [Key]
     public int IdTarea { get; set; }
 
     public string? NombreTarea { get; set; }

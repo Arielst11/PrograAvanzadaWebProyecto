@@ -2,15 +2,18 @@
 {
     public partial class Usuario
     {
-        public int IdUsuario { get; set; }
-
+        public string? Id { get; set; }
         public string? Nombre { get; set; }
 
         public string? PrimerApellido { get; set; }
 
         public string? SegundoApellido { get; set; }
 
-        public int? IdTipoUsuario { get; set; }
+        public string? Email { get; set; }
+
+        public string? UserName { get; set; }
+
+        public string? Password { get; set; }
 
         public int? IdClase { get; set; }
 

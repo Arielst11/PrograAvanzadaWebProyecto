@@ -18,6 +18,11 @@ builder.Services.AddScoped<ITareaHelper, TareaHelper>();
 builder.Services.AddScoped<ITipoUsuarioHelper, TipoUsuarioHelper>();
 builder.Services.AddScoped<IUsuarioHelper, UsuarioHelper>();
 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.AccessDeniedPath = "/Home/AccessDenied";
+});
+
 
 
 

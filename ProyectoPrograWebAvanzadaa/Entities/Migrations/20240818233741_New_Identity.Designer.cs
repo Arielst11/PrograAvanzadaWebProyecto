@@ -4,6 +4,7 @@ using Entities.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Entities.Migrations
 {
     [DbContext(typeof(AuthDBContext))]
-    partial class AuthDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240818233741_New_Identity")]
+    partial class New_Identity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,8 +39,8 @@ namespace Entities.Migrations
                     b.Property<DateOnly?>("Fecha")
                         .HasColumnType("date");
 
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int?>("IdUsuario")
+                        .HasColumnType("int");
 
                     b.Property<string>("IdUsuarioNavigationId")
                         .HasColumnType("nvarchar(450)");
@@ -79,13 +82,13 @@ namespace Entities.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdNota"));
 
-                    b.Property<string>("Id")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<int?>("IdTarea")
                         .HasColumnType("int");
 
                     b.Property<int?>("IdTareaNavigationIdTarea")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("IdUsuario")
                         .HasColumnType("int");
 
                     b.Property<string>("IdUsuarioNavigationId")
@@ -148,6 +151,9 @@ namespace Entities.Migrations
                         .HasColumnType("int");
 
                     b.Property<int?>("IdClaseNavigationIdClase")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IdUsuario")
                         .HasColumnType("int");
 
                     b.Property<bool>("LockoutEnabled")

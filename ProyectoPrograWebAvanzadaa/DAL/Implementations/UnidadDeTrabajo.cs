@@ -17,7 +17,6 @@ namespace DAL.Implementations
         public IClaseDAL ClaseDAL { get; set; }
         public IAsistenciaDAL AsistenciaDAL { get; set; }
         public INotaDAL NotaDAL { get; set; }
-        public ITipoUsuarioDAL TipoUsuarioDAL { get; set; }
         public IUsuarioDAL UsuarioDAL { get; set; }
 
 
@@ -28,7 +27,6 @@ namespace DAL.Implementations
                         IClaseDAL claseDAL,
                         IAsistenciaDAL asistenciaDAL,
                         INotaDAL notaDAL,
-                        ITipoUsuarioDAL tipoUsuarioDAL,
                         IUsuarioDAL usuarioDAL
             )
         {
@@ -37,7 +35,6 @@ namespace DAL.Implementations
             this.ClaseDAL = claseDAL;
             this.AsistenciaDAL = asistenciaDAL;
             this.NotaDAL = notaDAL;
-            this.TipoUsuarioDAL = tipoUsuarioDAL;
             this.UsuarioDAL = usuarioDAL;
         }
 

@@ -10,7 +10,7 @@ namespace BackEnd.Services.Interfaces
         bool Remove(UsuarioModel usuario);
         bool Update(UsuarioModel usuario);
 
-        UsuarioModel Get(int id);
+        UsuarioModel Get(string id);
         IEnumerable<UsuarioModel> Get();
 
 

@@ -28,12 +28,14 @@ namespace FrontEnd.Helpers.Implementations
         {
             return new UsuarioViewModel
             {
-                IdUsuario = usuario.IdUsuario,
+                Id = usuario.Id,
                 Nombre = usuario.Nombre,
                 PrimerApellido = usuario.PrimerApellido,
                 SegundoApellido = usuario.SegundoApellido,
-                IdTipoUsuario = usuario.IdTipoUsuario,
-                IdClase = usuario.IdClase
+                IdClase = usuario.IdClase,
+                Email = usuario.Email,
+                UserName = usuario.UserName,
+                Password = usuario.Password
             };
         }
 
@@ -41,12 +43,14 @@ namespace FrontEnd.Helpers.Implementations
         {
             return new Usuario
             {
-                IdUsuario = usuario.IdUsuario,
+                Id = usuario.Id,
                 Nombre = usuario.Nombre,
                 PrimerApellido = usuario.PrimerApellido,
                 SegundoApellido = usuario.SegundoApellido,
-                IdTipoUsuario = usuario.IdTipoUsuario,
-                IdClase = usuario.IdClase
+                IdClase = usuario.IdClase,
+                Email = usuario.Email,
+                UserName = usuario.UserName,
+                Password = usuario.Password
             };
         }
 
@@ -70,9 +74,9 @@ namespace FrontEnd.Helpers.Implementations
             return usuarios;
         }
 
-        public UsuarioViewModel GetUsuario(int id)
+        public UsuarioViewModel GetUsuario(string id)
         {
-            HttpResponseMessage responseMessage = _serviceRepository.GetResponse("api/usuario/" + id.ToString());
+            HttpResponseMessage responseMessage = _serviceRepository.GetResponse("api/usuario/" + id);
             Usuario resultado = new Usuario();
 
             if (responseMessage != null)
@@ -84,9 +88,9 @@ namespace FrontEnd.Helpers.Implementations
             return Convertir(resultado);
         }
 
-        public UsuarioViewModel Remove(int id)
+        public UsuarioViewModel Remove(string id)
         {
-            HttpResponseMessage responseMessage = _serviceRepository.DeleteResponse("api/usuario/" + id.ToString());
+            HttpResponseMessage responseMessage = _serviceRepository.DeleteResponse("api/usuario/" + id);
             Usuario resultado = new Usuario();
 
             if (responseMessage != null)

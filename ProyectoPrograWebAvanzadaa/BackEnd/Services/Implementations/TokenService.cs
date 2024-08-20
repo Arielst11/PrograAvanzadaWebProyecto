@@ -1,5 +1,6 @@
 ﻿using BackEnd.Model;
 using BackEnd.Services.Interfaces;
+using Entities.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -18,7 +19,7 @@ namespace BackEnd.Services.Implementations
         }
 
 
-        public TokenModel CreateToken(IdentityUser user, List<string> roles)
+        public TokenModel CreateToken(Usuario user, List<string> roles)
         {
 
             var authClaims = new List<Claim>

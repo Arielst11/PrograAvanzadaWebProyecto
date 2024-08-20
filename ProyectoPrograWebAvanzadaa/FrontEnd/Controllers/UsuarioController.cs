@@ -21,7 +21,7 @@ namespace FrontEnd.Controllers
         }
 
         // GET: UsuarioController/Details/5
-        public ActionResult Details(int id)
+        public ActionResult Details(string id)
         {
             UsuarioViewModel usuario = UsuarioHelper.GetUsuario(id);
             return View(usuario);
@@ -50,7 +50,7 @@ namespace FrontEnd.Controllers
         }
 
         // GET: UsuarioController/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(string id)
         {
             UsuarioViewModel usuario = UsuarioHelper.GetUsuario(id);
             return View(usuario);
@@ -73,7 +73,7 @@ namespace FrontEnd.Controllers
         }
 
         // GET: UsuarioController/Delete/5
-        public ActionResult Delete(int id)
+        public ActionResult Delete(string id)
         {
             UsuarioViewModel usuario = UsuarioHelper.GetUsuario(id);
             return View(usuario);
@@ -86,7 +86,7 @@ namespace FrontEnd.Controllers
         {
             try
             {
-                _ = UsuarioHelper.Remove(usuario.IdUsuario);
+                _ = UsuarioHelper.Remove(usuario.Id);
                 return RedirectToAction(nameof(Index));
             }
             catch

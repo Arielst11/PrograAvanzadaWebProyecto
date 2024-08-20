@@ -2,6 +2,7 @@
 using FrontEnd.Helpers.Interfaces;
 using FrontEnd.Models;
 using Newtonsoft.Json;
+using System.Net;
 
 namespace FrontEnd.Helpers.Implementations
 {
@@ -53,8 +54,17 @@ namespace FrontEnd.Helpers.Implementations
 
             if (responseMessage != null)
             {
-                var content = responseMessage.Content.ReadAsStringAsync().Result;
-                resultado = JsonConvert.DeserializeObject<List<Nota>>(content);
+                if (responseMessage.StatusCode == HttpStatusCode.Unauthorized)
+                {
+                    throw new UnauthorizedAccessException("No autorizado para acceder a esta información.");
+
+                }
+                else
+                {
+                    var content = responseMessage.Content.ReadAsStringAsync().Result;
+                    resultado = JsonConvert.DeserializeObject<List<Nota>>(content);
+                }
+                
             }
 
             List<NotaViewModel> notas = new List<NotaViewModel>();

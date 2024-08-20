@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace Entities.Entities
 {
-    public class AuthDBContext: IdentityDbContext
+    public class AuthDBContext: IdentityDbContext<Usuario>
     {
         public AuthDBContext(DbContextOptions<AuthDBContext> options): base(options)
         {
